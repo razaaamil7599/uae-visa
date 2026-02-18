@@ -385,39 +385,33 @@
 
       setTimeout(async () => {
         try {
-          let queryRef = db.collection('candidates');
+          // Fetch ALL candidates and filter client-side (avoids Firestore index issues)
+          const snapshot = await db.collection('candidates').get();
+          const allCandidates = [];
+          snapshot.forEach(doc => allCandidates.push(doc.data()));
           let results = [];
 
           if (searchBy === 'passport') {
             const passportNo = document.getElementById('passportNo').value.trim();
             if (!passportNo) { loader.style.display = 'none'; return alert("Please fill Passport No."); }
-            const snapshot = await queryRef.where('passport', '==', passportNo).get();
-            snapshot.forEach(doc => results.push(doc.data()));
+            allCandidates.forEach(c => {
+              if (c.passport === passportNo) results.push(c);
+            });
           } else if (searchBy === 'file' && type === 'Visa') {
             const fileDept = document.getElementById('fileDept').value.trim();
             const fileYear = document.getElementById('fileYear').value.trim();
             const fileTypePart = document.getElementById('fileTypePart').value.trim();
             const fileSeq = document.getElementById('fileSeq').value.trim();
             if (!fileDept || !fileYear || !fileTypePart || !fileSeq) { loader.style.display = 'none'; return alert("Please fill all File Number parts"); }
-            // Query by fileDept first, then filter client-side to avoid composite index requirement
-            const snapshot = await queryRef.where('fileDept', '==', fileDept).get();
-            snapshot.forEach(doc => {
-              const d = doc.data();
-              if (d.fileYear === fileYear && d.fileTypePart === fileTypePart && d.fileSeq === fileSeq) {
-                results.push(d);
-              }
+            allCandidates.forEach(c => {
+              if (c.fileDept === fileDept && c.fileYear === fileYear && c.fileTypePart === fileTypePart && c.fileSeq === fileSeq) results.push(c);
             });
           } else {
             const mainInput = document.getElementById('mainInput').value.trim();
             if (!mainInput) { loader.style.display = 'none'; return alert("Please enter the required information"); }
-            // Try unified number first
-            let snapshot = await queryRef.where('unifiedNumber', '==', mainInput).get();
-            snapshot.forEach(doc => results.push(doc.data()));
-            // If no results, try file number
-            if (results.length === 0) {
-              snapshot = await queryRef.where('fileNumber', '==', mainInput).get();
-              snapshot.forEach(doc => results.push(doc.data()));
-            }
+            allCandidates.forEach(c => {
+              if (c.unifiedNumber === mainInput || c.fileNumber === mainInput) results.push(c);
+            });
           }
 
           loader.style.display = 'none';
