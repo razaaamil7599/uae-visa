@@ -138,7 +138,7 @@
     </div>
 
     <script>
-        document.getElementById('auth-form').addEventListener('submit', async (e) => {
+        document.getElementById('auth-form').addEventListener('submit', (e) => {
             e.preventDefault();
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
@@ -148,23 +148,15 @@
             errorDiv.style.display = 'none';
             successDiv.style.display = 'none';
 
-            try {
-                const response = await fetch('/api/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, password })
-                });
-
-                const data = await response.json();
-
-                if (response.ok) {
-                    window.location.href = '/admin-page';
-                } else {
-                    errorDiv.innerText = data.error || "Operation failed";
-                    errorDiv.style.display = 'block';
-                }
-            } catch (err) {
-                errorDiv.innerText = "Server error occurred";
+            if (username === 'admin' && password === 'Aamil@7599') {
+                successDiv.innerText = "Login successful! Redirecting...";
+                successDiv.style.display = 'block';
+                sessionStorage.setItem('isLoggedIn', 'true');
+                setTimeout(() => {
+                    window.location.href = '/admin.html';
+                }, 500);
+            } else {
+                errorDiv.innerText = "Invalid username or password";
                 errorDiv.style.display = 'block';
             }
         });
