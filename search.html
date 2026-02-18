@@ -20,6 +20,22 @@
 </head>
 
 <body onload="updateSearchMode()">
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCUJtSGtLJHA-x8ITjHMVRVCi1mLYeqO9s",
+      authDomain: "visa-mofa-services.firebaseapp.com",
+      projectId: "visa-mofa-services",
+      storageBucket: "visa-mofa-services.appspot.com",
+      messagingSenderId: "649801466644",
+      appId: "1:649801466644:web:863d1cf2cb6a00fc583801"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
+
   <div class="loading-overlay" id="loadingOverlay">
     <img src="falcon-loader.gif" alt="Loading...">
   </div>
@@ -31,8 +47,8 @@
         <img src="tawasul-logo.png" alt="ICP Logo" height="40">
         <div class="nav-links-main">
           <a href="/"><i class="fas fa-home"></i> Home</a>
-          <a href="/browse-services" class="active">Public Services</a>
-          <a href="/golden-services">Golden Residency Services</a>
+          <a href="/browse-services.html" class="active">Public Services</a>
+          <a href="/golden-services.html">Golden Residency Services</a>
           <a href="#">Blue Residency Services</a>
           <a href="#">Public Visa Services</a>
           <div class="nav-dropdown">
@@ -363,42 +379,57 @@
       const nationality = document.getElementById('natSearch').value;
       const resultDiv = document.getElementById('result');
 
-      let body = { searchBy, type, dob, nationality };
-
-      if (searchBy === 'file' && type === 'Visa') {
-        body.fileDept = document.getElementById('fileDept').value.trim();
-        body.fileYear = document.getElementById('fileYear').value.trim();
-        body.fileTypePart = document.getElementById('fileTypePart').value.trim();
-        body.fileSeq = document.getElementById('fileSeq').value.trim();
-        if (!body.fileDept || !body.fileYear || !body.fileTypePart || !body.fileSeq) return alert("Please fill all File Number parts");
-      } else if (searchBy === 'passport') {
-        body.query = document.getElementById('passportNo').value.trim();
-        body.passportExpiry = document.getElementById('passportExpiry').value;
-        if (!body.query || !body.passportExpiry) return alert("Please fill all Passport details");
-      } else {
-        body.query = document.getElementById('mainInput').value.trim();
-        if (!body.query) return alert("Please enter the required information");
-      }
-
       resultDiv.innerHTML = "";
       const loader = document.getElementById('loadingOverlay');
       loader.style.display = 'flex';
 
-      setTimeout(() => {
-        fetch('/search', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(body)
-        })
-          .then(res => {
-            loader.style.display = 'none';
-            if (!res.ok) throw new Error('Not found');
-            return res.json();
-          })
-          .then(data => {
-            const fullFileNo = data.fileDept ? `${data.fileDept} / ${data.fileYear} / ${data.fileTypePart} / ${data.fileSeq}` : (data.fileNumber || '-');
+      setTimeout(async () => {
+        try {
+          let queryRef = db.collection('candidates');
+          let results = [];
 
+          if (searchBy === 'passport') {
+            const passportNo = document.getElementById('passportNo').value.trim();
+            if (!passportNo) { loader.style.display = 'none'; return alert("Please fill Passport No."); }
+            const snapshot = await queryRef.where('passport', '==', passportNo).get();
+            snapshot.forEach(doc => results.push(doc.data()));
+          } else if (searchBy === 'file' && type === 'Visa') {
+            const fileDept = document.getElementById('fileDept').value.trim();
+            const fileYear = document.getElementById('fileYear').value.trim();
+            const fileTypePart = document.getElementById('fileTypePart').value.trim();
+            const fileSeq = document.getElementById('fileSeq').value.trim();
+            if (!fileDept || !fileYear || !fileTypePart || !fileSeq) { loader.style.display = 'none'; return alert("Please fill all File Number parts"); }
+            const snapshot = await queryRef.where('fileDept', '==', fileDept).where('fileYear', '==', fileYear).where('fileTypePart', '==', fileTypePart).where('fileSeq', '==', fileSeq).get();
+            snapshot.forEach(doc => results.push(doc.data()));
+          } else {
+            const mainInput = document.getElementById('mainInput').value.trim();
+            if (!mainInput) { loader.style.display = 'none'; return alert("Please enter the required information"); }
+            // Try unified number first
+            let snapshot = await queryRef.where('unifiedNumber', '==', mainInput).get();
+            snapshot.forEach(doc => results.push(doc.data()));
+            // If no results, try file number
+            if (results.length === 0) {
+              snapshot = await queryRef.where('fileNumber', '==', mainInput).get();
+              snapshot.forEach(doc => results.push(doc.data()));
+            }
+          }
+
+          loader.style.display = 'none';
+
+          if (results.length === 0) {
             resultDiv.innerHTML = `
+            <div style="background:#fef2f2; border:1px solid #fee2e2; padding:20px; border-radius:8px; text-align:center">
+              <p style="color:#ef4444; font-weight:600">❌ Record not found or invalid details provided</p>
+              <p style="font-size:0.85rem; color:#666; margin-top:5px">Please check your inputs and try again.</p>
+            </div>
+          `;
+            return;
+          }
+
+          const data = results[0];
+          const fullFileNo = data.fileDept ? `${data.fileDept} / ${data.fileYear} / ${data.fileTypePart} / ${data.fileSeq}` : (data.fileNumber || '-');
+
+          resultDiv.innerHTML = `
             <div class="result-container-icp">
               <!-- Service Beneficiary Section -->
               <div class="result-section-header-icp">Identification Information (Service Beneficiary)</div>
@@ -433,20 +464,20 @@
                   
               </div>
               <div class="extension-link-icp">
-                <a href="/visa-extension">Apply for Visa extension from here</a>
+                <a href="/visa-extension.html">Apply for Visa extension from here</a>
               </div>
             </div>
           `;
-          })
-          .catch(err => {
-            loader.style.display = 'none';
-            resultDiv.innerHTML = `
+        } catch (err) {
+          loader.style.display = 'none';
+          console.error(err);
+          resultDiv.innerHTML = `
             <div style="background:#fef2f2; border:1px solid #fee2e2; padding:20px; border-radius:8px; text-align:center">
               <p style="color:#ef4444; font-weight:600">❌ Record not found or invalid details provided</p>
               <p style="font-size:0.85rem; color:#666; margin-top:5px">Please check your inputs and try again.</p>
             </div>
           `;
-          });
+        }
       }, 1500);
     }
 

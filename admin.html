@@ -58,10 +58,26 @@
 </head>
 
 <body>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCUJtSGtLJHA-x8ITjHMVRVCi1mLYeqO9s",
+            authDomain: "visa-mofa-services.firebaseapp.com",
+            projectId: "visa-mofa-services",
+            storageBucket: "visa-mofa-services.appspot.com",
+            messagingSenderId: "649801466644",
+            appId: "1:649801466644:web:863d1cf2cb6a00fc583801"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+    </script>
+
     <div class="container">
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <div class="page-title">Admin Management Panel</div>
-            <a href="/logout" class="btn-delete"
+            <a href="#" onclick="sessionStorage.clear(); location.href='/login.html';" class="btn-delete"
                 style="text-decoration: none; padding: 10px 20px; display: inline-block;">
                 <i class="fas fa-sign-out-alt"></i> Logout
             </a>
@@ -78,7 +94,7 @@
                     </div>
                 </div>
 
-                <form method="POST" action="/add" enctype="multipart/form-data" id="registerForm">
+                <form id="registerForm" onsubmit="return false;">
                     <!-- Search By Section -->
                     <div class="form-section">
                         <span class="section-label">Search By</span>
@@ -305,45 +321,112 @@
             }
         }
 
-        function loadCandidates() {
-            fetch('/candidates')
-                .then(res => res.json())
-                .then(data => {
-                    const tbody = document.getElementById('candidatesBody');
-                    tbody.innerHTML = '';
-                    data.forEach(c => {
-                        const isPdf = c.photo.toLowerCase().endsWith('.pdf');
-                        const photoHtml = isPdf
-                            ? `<a href="/upload/${c.photo}" target="_blank" style="color:#2b778c; font-size:0.7rem;">PDF</a>`
-                            : `<img src="/upload/${c.photo}" class="row-photo">`;
-
-                        const fileNo = c.fileDept ? `${c.fileDept}/${c.fileYear}/${c.fileTypePart}/${c.fileSeq}` : (c.fileNumber || '-');
-
-                        const tr = document.createElement('tr');
-                        tr.innerHTML = `
-                            <td>${photoHtml}</td>
-                            <td>${fileNo}</td>
-                            <td>${c.passport}</td>
-                            <td>${c.unifiedNumber || '-'}</td>
-                            <td>${c.fileStatus || 'USED'}</td>
-                            <td>${c.issuanceDate || '-'}</td>
-                            <td>${c.expiryDate || '-'}</td>
-                            <td><button onclick="deleteCandidate('${c.passport}')" class="btn-delete">Delete</button></td>
-                        `;
-                        tbody.appendChild(tr);
-                    });
-                });
+        // Convert file to Base64
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = reject;
+            });
         }
 
-        function deleteCandidate(passport) {
+        // Add Candidate to Firestore
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const form = document.getElementById('registerForm');
+            const btn = document.getElementById('btnAdd');
+            btn.disabled = true;
+            btn.textContent = 'Saving...';
+
+            try {
+                const type = document.querySelector('input[name="type"]:checked').value;
+                const photoFile = form.querySelector('input[name="photo"]').files[0];
+                let photoBase64 = '';
+                if (photoFile) {
+                    photoBase64 = await fileToBase64(photoFile);
+                }
+
+                const data = {
+                    type: type,
+                    passport: form.querySelector('input[name="passport"]').value,
+                    passportExpiry: form.querySelector('input[name="passportExpiry"]').value,
+                    visa: form.querySelector('input[name="visa"]').value,
+                    unifiedNumber: form.querySelector('input[name="unifiedNumber"]').value,
+                    nationality: form.querySelector('input[name="nationality"]').value,
+                    natCode: document.getElementById('natCode').value,
+                    dob: form.querySelector('input[name="dob"]').value,
+                    fileStatus: form.querySelector('select[name="fileStatus"]').value,
+                    issuanceDate: form.querySelector('input[name="issuanceDate"]').value,
+                    expiryDate: form.querySelector('input[name="expiryDate"]').value,
+                    lastLeavingDate: form.querySelector('input[name="lastLeavingDate"]').value,
+                    photo: photoBase64,
+                    photoName: photoFile ? photoFile.name : '',
+                    createdAt: new Date().toISOString()
+                };
+
+                if (type === 'Visa') {
+                    data.fileDept = form.querySelector('input[name="fileDept"]').value;
+                    data.fileYear = form.querySelector('input[name="fileYear"]').value;
+                    data.fileTypePart = form.querySelector('input[name="fileTypePart"]').value;
+                    data.fileSeq = form.querySelector('input[name="fileSeq"]').value;
+                } else {
+                    data.fileNumber = form.querySelector('input[name="fileNumber"]').value;
+                }
+
+                await db.collection('candidates').add(data);
+                alert('✅ Candidate added successfully!');
+                form.reset();
+                loadCandidates();
+            } catch (err) {
+                console.error(err);
+                alert('❌ Error: ' + err.message);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Add Candidate';
+            }
+        });
+
+        // Load Candidates from Firestore
+        function loadCandidates() {
+            db.collection('candidates').orderBy('createdAt', 'desc').get().then(snapshot => {
+                const tbody = document.getElementById('candidatesBody');
+                tbody.innerHTML = '';
+                snapshot.forEach(doc => {
+                    const c = doc.data();
+                    const docId = doc.id;
+                    let photoHtml = '-';
+                    if (c.photo) {
+                        const isPdf = c.photoName && c.photoName.toLowerCase().endsWith('.pdf');
+                        photoHtml = isPdf
+                            ? `<a href="${c.photo}" target="_blank" style="color:#2b778c; font-size:0.7rem;">PDF</a>`
+                            : `<img src="${c.photo}" class="row-photo">`;
+                    }
+
+                    const fileNo = c.fileDept ? `${c.fileDept}/${c.fileYear}/${c.fileTypePart}/${c.fileSeq}` : (c.fileNumber || '-');
+
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${photoHtml}</td>
+                        <td>${fileNo}</td>
+                        <td>${c.passport || '-'}</td>
+                        <td>${c.unifiedNumber || '-'}</td>
+                        <td>${c.fileStatus || 'USED'}</td>
+                        <td>${c.issuanceDate || '-'}</td>
+                        <td>${c.expiryDate || '-'}</td>
+                        <td><button onclick="deleteCandidate('${docId}')" class="btn-delete">Delete</button></td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            }).catch(err => console.error('Load error:', err));
+        }
+
+        // Delete Candidate from Firestore
+        function deleteCandidate(docId) {
             if (!confirm('Are you sure?')) return;
-            fetch('/delete', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ passport })
-            }).then(res => res.json()).then(data => {
-                if (data.success) loadCandidates();
-            });
+            db.collection('candidates').doc(docId).delete().then(() => {
+                loadCandidates();
+            }).catch(err => alert('Delete error: ' + err.message));
         }
 
         loadCandidates();
@@ -397,7 +480,7 @@
             document.getElementById('btnAdd').textContent = translation[lang].add;
 
             form.querySelectorAll('input:not([type="file"]):not([type="date"])').forEach(input => {
-                if (input.name === 'nationality') return; // Skip special searchable input
+                if (input.name === 'nationality') return;
                 input.placeholder = translation[lang][input.name] || input.placeholder;
             });
         }

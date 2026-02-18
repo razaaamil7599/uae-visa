@@ -10,10 +10,26 @@
 </head>
 
 <body>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCUJtSGtLJHA-x8ITjHMVRVCi1mLYeqO9s",
+      authDomain: "visa-mofa-services.firebaseapp.com",
+      projectId: "visa-mofa-services",
+      storageBucket: "visa-mofa-services.appspot.com",
+      messagingSenderId: "649801466644",
+      appId: "1:649801466644:web:863d1cf2cb6a00fc583801"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
+
   <div class="container">
     <div class="page-title">Register New Candidate</div>
 
-    <form method="POST" action="/add" enctype="multipart/form-data" id="registerForm">
+    <form id="registerForm" onsubmit="return false;">
       <div style="display: flex; justify-content: flex-end; padding: 10px 20px;">
         <div class="lang-toggle-container">
           <button type="button" class="lang-btn active" id="btn-en">English</button>
@@ -217,6 +233,71 @@
         multi.style.display = 'none';
       }
     }
+
+    // Convert file to Base64
+    function fileToBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+      });
+    }
+
+    // Add Candidate to Firestore
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = document.getElementById('registerForm');
+      const btn = document.getElementById('btnAdd');
+      btn.disabled = true;
+      btn.textContent = 'Saving...';
+
+      try {
+        const type = document.querySelector('input[name="type"]:checked').value;
+        const photoFile = form.querySelector('input[name="photo"]').files[0];
+        let photoBase64 = '';
+        if (photoFile) {
+          photoBase64 = await fileToBase64(photoFile);
+        }
+
+        const data = {
+          type: type,
+          passport: form.querySelector('input[name="passport"]').value,
+          passportExpiry: form.querySelector('input[name="passportExpiry"]').value,
+          visa: form.querySelector('input[name="visa"]').value,
+          unifiedNumber: form.querySelector('input[name="unifiedNumber"]').value,
+          nationality: form.querySelector('input[name="nationality"]').value,
+          natCode: document.getElementById('natCode').value,
+          dob: form.querySelector('input[name="dob"]').value,
+          fileStatus: form.querySelector('select[name="fileStatus"]').value,
+          issuanceDate: form.querySelector('input[name="issuanceDate"]').value,
+          expiryDate: form.querySelector('input[name="expiryDate"]').value,
+          lastLeavingDate: form.querySelector('input[name="lastLeavingDate"]').value,
+          photo: photoBase64,
+          photoName: photoFile ? photoFile.name : '',
+          createdAt: new Date().toISOString()
+        };
+
+        if (type === 'Visa') {
+          data.fileDept = form.querySelector('input[name="fileDept"]').value;
+          data.fileYear = form.querySelector('input[name="fileYear"]').value;
+          data.fileTypePart = form.querySelector('input[name="fileTypePart"]').value;
+          data.fileSeq = form.querySelector('input[name="fileSeq"]').value;
+        } else {
+          data.fileNumber = form.querySelector('input[name="fileNumber"]').value;
+        }
+
+        await db.collection('candidates').add(data);
+        alert('✅ Candidate added successfully!');
+        form.reset();
+      } catch (err) {
+        console.error(err);
+        alert('❌ Error: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Add Candidate';
+      }
+    });
 
     const btnEn = document.getElementById('btn-en');
     const btnAr = document.getElementById('btn-ar');
