@@ -1,0 +1,29 @@
+<svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Briefcase -->
+  <path d="M16 7H14V5C14 4.45 13.55 4 13 4H11C10.45 4 10 4.45 10 5V7H8C6.9 7 6 7.9 6 9V17C6 18.1 6.9 19 8 19H16C17.1 19 18 18.1 18 17V9C18 7.9 17.1 7 16 7ZM11 6H13V7H11V6ZM16 17H8V9H16V17Z" fill="#bfa36a"/>
+  
+  <!-- Dashed lines and dots -->
+  <circle cx="12" cy="2" r="1.5" fill="#bfa36a" fill-opacity="0.3"/>
+  <line x1="12" y1="3.5" x2="12" y2="5" stroke="#bfa36a" stroke-width="1" stroke-dasharray="1 1"/>
+  
+  <circle cx="12" cy="22" r="1.5" fill="#bfa36a" fill-opacity="0.3"/>
+  <line x1="12" y1="20.5" x2="12" y2="19" stroke="#bfa36a" stroke-width="1" stroke-dasharray="1 1"/>
+  
+  <circle cx="2" cy="12" r="1.5" fill="#bfa36a" fill-opacity="0.3"/>
+  <line x1="3.5" y1="12" x2="5" y2="12" stroke="#bfa36a" stroke-width="1" stroke-dasharray="1 1"/>
+  
+  <circle cx="22" cy="12" r="1.5" fill="#bfa36a" fill-opacity="0.3"/>
+  <line x1="20.5" y1="12" x2="19" y2="12" stroke="#bfa36a" stroke-width="1" stroke-dasharray="1 1"/>
+  
+  <circle cx="5" cy="5" r="1.5" fill="#bfa36a" fill-opacity="0.3"/>
+  <line x1="6" y1="6" x2="7.5" y2="7.5" stroke="#bfa36a" stroke-width="1" stroke-dasharray="1 1"/>
+  
+  <circle cx="19" cy="5" r="1.5" fill="#bfa36a" fill-opacity="0.3"/>
+  <line x1="18" y1="6" x2="16.5" y2="7.5" stroke="#bfa36a" stroke-width="1" stroke-dasharray="1 1"/>
+  
+  <circle cx="5" cy="19" r="1.5" fill="#bfa36a" fill-opacity="0.3"/>
+  <line x1="6" y1="18" x2="7.5" y2="16.5" stroke="#bfa36a" stroke-width="1" stroke-dasharray="1 1"/>
+  
+  <circle cx="19" cy="19" r="1.5" fill="#bfa36a" fill-opacity="0.3"/>
+  <line x1="18" y1="18" x2="16.5" y2="16.5" stroke="#bfa36a" stroke-width="1" stroke-dasharray="1 1"/>
+</svg>

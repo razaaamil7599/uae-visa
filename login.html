@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Admin Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
+    <style>
+        body {
+            background: #f4f7f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .login-card {
+            background: white;
+            width: 100%;
+            max-width: 400px;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .card-header {
+            margin-bottom: 30px;
+        }
+
+        .card-header img {
+            height: 50px;
+            margin-bottom: 20px;
+        }
+
+        .card-header h2 {
+            color: #736340;
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .form-toggle {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .toggle-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: #999;
+            transition: all 0.3s;
+        }
+
+        .toggle-btn.active {
+            color: #bfa36a;
+            border-bottom: 3px solid #bfa36a;
+        }
+
+        .login-input {
+            width: 100%;
+            padding: 12px 15px !important;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            box-sizing: border-box;
+        }
+
+        .btn-auth {
+            width: 100%;
+            padding: 14px;
+            background: #bfa36a;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-auth:hover {
+            background: #a68c5b;
+        }
+
+        #error-msg {
+            color: #ef4444;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            display: none;
+        }
+
+        #success-msg {
+            color: #10b981;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-card">
+        <div class="card-header">
+            <img src="tawasul-logo.png" alt="Portal Logo">
+            <h2 id="form-title">Internal Login</h2>
+        </div>
+
+        <div id="error-msg"></div>
+        <div id="success-msg"></div>
+
+        <form id="auth-form">
+            <input type="text" id="username" placeholder="Admin Username" class="login-input" required>
+            <input type="password" id="password" placeholder="Password" class="login-input" required>
+
+            <div style="text-align: right; margin-bottom: 20px; margin-top: -10px;">
+                <a href="#" style="color: #666; font-size: 0.8rem; text-decoration: none;">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="btn-auth" id="btn-submit">Sign In</button>
+        </form>
+
+        <div style="margin-top: 25px;">
+            <a href="/" style="color: #666; font-size: 0.85rem; text-decoration: none;">
+                <i class="fas fa-arrow-left"></i> Back to Main Portal
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('auth-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorDiv = document.getElementById('error-msg');
+            const successDiv = document.getElementById('success-msg');
+
+            errorDiv.style.display = 'none';
+            successDiv.style.display = 'none';
+
+            try {
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    window.location.href = '/admin-page';
+                } else {
+                    errorDiv.innerText = data.error || "Operation failed";
+                    errorDiv.style.display = 'block';
+                }
+            } catch (err) {
+                errorDiv.innerText = "Server error occurred";
+                errorDiv.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+
+</html>

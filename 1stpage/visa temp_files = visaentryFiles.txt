@@ -1,0 +1,2 @@
+visa temp_files = visaentryFiles
+Visa platform_files = fisrtpagevisafiles

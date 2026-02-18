@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Data Entry Table</title>
+<script src ="Visa platform_files/visa-data.js"></script>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  table, th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #4CAF50;
+    color: white;
+  }
+  .btn {
+    padding: 5px 10px;
+    margin: 2px;
+    cursor: pointer;
+  }
+  .add-btn {
+    background-color: #4CAF50;
+    color: white;
+  }
+  .delete-btn {
+    background-color: #f44336;
+    color: white;
+  }
+  .input-field {
+    padding: 5px;
+    margin: 5px 0;
+    box-sizing: border-box;
+  }
+</style>
+</head>
+<body>
+  
+
+<table id="dataEntryTable">
+  <tr>
+    <th>Image</th>
+    <th>Name</th>
+    <th>Visa No.</th>
+    <th>status</th>
+    <th>Valid From</th>
+    <th>stay duration</th>
+    <th>Date of Birth</th>
+    <th>Passport No.</th>
+    <th>Ref. No.</th>
+    <th>Occupation</th>
+    <th>Employer name</th>
+    <th>pss code</th>
+    <th>Actions</th>
+  </tr>
+ 
+</table>
+
+<div id="changebutton">
+<button class="btn add-btn" id="addRow" onclick="addRow()">ADD</button>
+</div>
+
+<button class="btn add-btn" ondblclick="downloadFile()">downloadFile</button>
+
+
+<!-- <script type="module" src="visa-data.js"></script>  -->
+<!-- <script defer type="text/javascript" src="my.js"> </script> -->
+
+<script >
+
+  console.log(visadata);
+  
+function addRow() {
+
+  var table = document.getElementById("dataEntryTable");
+  document.getElementById("changebutton").innerHTML=`<button class="btn add-btn" ondblclick="addDATA()">SAVE</button>`;
+  var row = table.insertRow(-1);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  var cell4 = row.insertCell(3);
+  var cell5 = row.insertCell(4);
+  var cell6 = row.insertCell(5);
+  var cell7 = row.insertCell(6);
+  var cell8 = row.insertCell(7);
+  var cell9 = row.insertCell(8);
+  var cell10 = row.insertCell(9);
+  var cell11 = row.insertCell(10);
+  var cell12 = row.insertCell(11);
+  var cell13 = row.insertCell(12);
+  
+
+  cell1.innerHTML = '<input id ="image" type="file" class="input-field" accept="image/*">'; // image
+  cell2.innerHTML = '<input id="Name" type="text" class="input-field" placeholder="Name">'; // name
+  cell3.innerHTML = '<input type="number" class="input-field" placeholder="visa no">'; // visa no.
+  cell4.innerHTML = '<button class="status" onclick="changestatus()" >status</button>'; // stastus button
+
+  cell5.innerHTML = '<input type="date" class="input-field">'; // valid from 
+  cell6.innerHTML = '<input type="number" class="input-field" placeholder=duration">'; // duration 
+  cell7.innerHTML = '<input type="date" class="input-field">'; // dob 
+  cell8.innerHTML = '<input type="number" class="input-field" placeholder="Passport No.">'; // pn
+  cell9.innerHTML = '<input type="number" class="input-field" placeholder="ref No.">'; // rf
+  cell10.innerHTML = '<input type="text" class="input-field" placeholder="Occupation">'; // rf
+  cell11.innerHTML = '<input type="text" class="input-field" placeholder="Employer name">'; // rf
+  cell12.innerHTML = '<input type="text" class="input-field" placeholder="pass code">'; // rf
+  cell13.innerHTML = '<button class="btn add-btn" onclick="edit()">edit</button>'; 
+  
+
+}
+function addDATA(){
+  
+var newVisaData =[{ 
+    Visa_no: document.querySelector().value,
+    Name: document.querySelector("#Name").value,
+    Application_No: document.querySelector().value,
+    Valid_From:  document.querySelector().value,
+    Valid_Until:  document.querySelector().value,
+    validy_days: document.querySelector().value,
+    Visa_Type: document.querySelector().value,
+    Birth_Date: document.querySelector().value,
+    Passport_No:1321,
+    agencyname:document.querySelector().value,
+    Employer_name:document.querySelector().value,
+    Ref_no:document.querySelector().value,
+    Ref_Date:document.querySelector().value,
+    Occupation:document.querySelector().value,
+    Employer_name:document.querySelector().value,
+    Valid_till :document.querySelector().value,
+    PSScode1:document.querySelector().value,
+    PSScode2:document.querySelector().value,
+    imagesrc:"Visa platform_files/media/"+document.querySelector().value,
+    barcode_image:"Visa platform_files/media/"+document.querySelector().document.querySelector().value
+    
+  } 
+  ];;
+  alert("newVisaData.Name");
+  alert(newVisaData.Name);
+  visadata.push(newVisaData);
+  
+}
+function downloadFile(){
+  
+  const st = JSON.stringify(visadata); 
+      var studentText =`const visadata = `+st;
+
+
+      // Download the text file using a blob and URL
+      const blob = new Blob([studentText], { type: 'javaScript' });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'visa-data.js'; // Set filename
+      link.click();
+
+      // Clear the input fields
+      nameInput.value = '';
+      ageInput.value = '';
+
+      alert('Student data saved to text file!');}
+
+function deleteRow(r) {
+  var i = r.parentNode.parentNode.rowIndex;
+   document.getElementById("dataEntryTable").deleteRow(i);
+}
+</script>
+
+
+
+
+<script>
+ 
+
+  for( var i = 0 ;i<visadata.length;i++){
+     addtuple(i);      
+ 
+  }
+  function addtuple(){
+ 
+   var table = document.getElementById("dataEntryTable");
+   var row = table.insertRow(-1);
+   var cell1 = row.insertCell(0);
+   var cell2 = row.insertCell(1);
+   var cell3 = row.insertCell(2);
+   var cell4 = row.insertCell(3);
+   var cell5 = row.insertCell(4);
+   var cell6 = row.insertCell(5);
+   var cell7 = row.insertCell(6);
+   var cell8 = row.insertCell(7);
+   var cell9 = row.insertCell(8);
+   var cell10 = row.insertCell(9);
+   var cell11 = row.insertCell(10);
+   var cell12 = row.insertCell(11);
+   var cell13 = row.insertCell(12);
+   
+
+  var imgpath = "Visa platform_files/media/profile/"+visadata[i].imagesrc;
+   cell1.innerHTML = ` <img src="${imgpath}">`; // image
+   cell2.innerHTML = `<td>${visadata[i].Name}</td>`; // name
+   cell3.innerHTML = `<td>${visadata[i].Visa_no}</td>`; // visa no.
+   cell4.innerHTML = `<td><button class="statusbtn">${visadata[i].status}</button></td>`; // stastus button
+ 
+   cell5.innerHTML =` <td>${visadata[i].Valid_From}</td>`; // valid from 
+   cell6.innerHTML = ` <td>${visadata[i].validy_days} days</td>`; // duration 
+   cell7.innerHTML = ` <td>${visadata[i].Birth_Date}</td>`; // dob 
+   cell8.innerHTML = ` <td>${visadata[i].Passport_No}</td>`;; // pn
+   cell9.innerHTML=` <td>${visadata[i].Ref_no}</td>`; // rf
+   cell10.innerHTML =` <td>${visadata[i].Occupation}</td>`; // occupataion
+   cell11.innerHTML = ` <td>${visadata[i].Employer_name}</td>`; // rf
+   cell12.innerHTML =` <td> ${visadata[i].PSScode2} </td>`;// rf
+   cell13.innerHTML = `<button class="btn add-btn" onclick="edit(${i})">edit</button>`; 
+   
+ 
+ 
+  }
+  function edit(i){
+   var pss=  prompt(` enter password to change \n ${visadata[i].Name} detail `);
+  
+   if(pss==786){
+  var table = document.getElementById("dataEntryTable");
+  var row = table.insertRow(-1);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  var cell4 = row.insertCell(3);
+  var cell5 = row.insertCell(4);
+  var cell6 = row.insertCell(5);
+  var cell7 = row.insertCell(6);
+  var cell8 = row.insertCell(7);
+  var cell9 = row.insertCell(8);
+  var cell10 = row.insertCell(9);
+  var cell11 = row.insertCell(10);
+  var cell12 = row.insertCell(11);
+  var cell13 = row.insertCell(12);
+  
+
+  cell1.innerHTML = `<input id ="editimage" type="file"  class="input-field">`; // image
+  cell2.innerHTML = `<input id="editName" type="text" class="input-field" value=${visadata[i].Name}>`; // name
+  cell3.innerHTML = `<input type="number" class="input-field" value=${visadata[i].Visa_no}>`; // visa no.
+  cell4.innerHTML = `<button class="status" onclick="changestatus()" >value=${visadata[i].status}</button>`; // stastus button
+
+  cell5.innerHTML = `<input type="date" class="input-field">`; // valid from 
+  cell6.innerHTML = `<input type="number" class="input-field" value=${visadata[i].validy_days}">`; // duration 
+  cell7.innerHTML = `<input type="date" class="input-field">`; // dob 
+  cell8.innerHTML = `<input type="number" class="input-field" value=${visadata[i].Passport_No}">`; // pn
+  cell9.innerHTML = `<input type="number" class="input-field" value=${visadata[i].Ref_no}>`; // rf
+  cell10.innerHTML = `<input type="text" class="input-field" value=${visadata[i].Occupation}>`; // rf
+  cell11.innerHTML = `<input type="text" class="input-field" value=${visadata[i].Employer_name}>`; // rf
+  cell12.innerHTML = `<input type="text" class="input-field"value=${visadata[i].PSScode1 +visadata[i].PSScode2}>`; // rf
+  cell13.innerHTML = `<button class="btn add-btn" onclick="editSave(${i})">save</button>`; 
+  
+
+}
+else
+{alert("wrong password ");}
+  }
+
+  function editSave(i){
+    var newData ={
+      Name: document.getElementById("editName").value,
+    }
+    visadata.push(newData);
+  }
+  
+  function addSave(i){
+    
+   
+  }
+  </script>
+
+</body>
+</html>

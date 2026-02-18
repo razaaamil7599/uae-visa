@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Data Entry Table</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  table, th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #4CAF50;
+    color: white;
+  }
+  .btn {
+    padding: 5px 10px;
+    margin: 2px;
+    cursor: pointer;
+  }
+  .add-btn {
+    background-color: #4CAF50;
+    color: white;
+  }
+  .delete-btn {
+    background-color: #f44336;
+    color: white;
+  }
+  .input-field {
+    padding: 5px;
+    margin: 5px 0;
+    box-sizing: border-box;
+  }
+</style>
+</head>
+<body>
+
+<table id="dataEntryTable">
+  <tr>
+    <th>Image</th>
+    <th>Name</th>
+    <th>Visa No.</th>
+    <th>status</th>
+    <th>Valid From</th>
+    <th>stay duration</th>
+    <th>Date of Birth</th>
+    <th>Passport No.</th>
+    <th>Ref. No.</th>
+    <th>Occupation</th>
+    <th>Employer name</th>
+    <th>pss code</th>
+    
+
+
+    <th></th>
+    <th>Actions</th>
+  </tr>
+</table>
+
+<button class="btn add-btn" onclick="addRow()">Add New Entry</button>
+
+<script>
+  function addRow2() {
+  var table = document.getElementById("dataEntryTable");
+  var row = table.insertRow(-1);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  var cell4 = row.insertCell(3);
+  var cell5 = row.insertCell(4);
+
+  cell1.innerHTML = '<input type="file" class="input-field">';
+  cell2.innerHTML = '<input type="text" class="input-field" placeholder="Name" readonly>';
+  cell3.innerHTML = '<input type="date" class="input-field" readonly>';
+  cell4.innerHTML = '<input type="number" class="input-field" placeholder="Age" readonly>';
+  cell5.innerHTML = '<button class="btn delete-btn" onclick="deleteRow(this)">Delete</button>';
+}
+
+function addRow() {
+  var table = document.getElementById("dataEntryTable");
+  var row = table.insertRow(-1);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  var cell4 = row.insertCell(3);
+  var cell5 = row.insertCell(4);
+
+  cell1.innerHTML = '<input type="file" class="input-field">';
+  cell2.innerHTML = '<input type="date" class="input-field">';
+  cell3.innerHTML = '<input type="text" class="input-field" placeholder="Name">';
+  cell4.innerHTML = '<input type="number" class="input-field" placeholder="Age">';
+  cell5.innerHTML = '<button class="btn delete-btn" onclick="deleteRow(this)">Delete</button>';
+}
+
+function deleteRow(r) {
+  var i = r.parentNode.parentNode.rowIndex;
+  document.getElementById("dataEntryTable").deleteRow(i);
+}
+</script>
+
+</body>
+</html>

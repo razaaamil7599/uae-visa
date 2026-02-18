@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Validity | AL-HARAM PORTAL</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
+  <style>
+    body {
+      padding: 0;
+    }
+
+    .container {
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body onload="updateSearchMode()">
+  <div class="loading-overlay" id="loadingOverlay">
+    <img src="falcon-loader.gif" alt="Loading...">
+  </div>
+
+  <!-- Top Navbar -->
+  <nav class="icp-nav">
+    <div class="nav-content">
+      <div class="nav-left">
+        <img src="tawasul-logo.png" alt="ICP Logo" height="40">
+        <div class="nav-links-main">
+          <a href="/"><i class="fas fa-home"></i> Home</a>
+          <a href="/browse-services" class="active">Public Services</a>
+          <a href="/golden-services">Golden Residency Services</a>
+          <a href="#">Blue Residency Services</a>
+          <a href="#">Public Visa Services</a>
+          <div class="nav-dropdown">
+            <a href="#">Help <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+          </div>
+          <a href="#">User Manual</a>
+        </div>
+      </div>
+      <div class="nav-right">
+        <i class="fas fa-th"></i>
+        <i class="fas fa-search"></i>
+        <i class="fas fa-language"></i>
+        <i class="fas fa-globe"></i>
+        <div class="nav-login" onclick="location.href='/login-page'">
+          <i class="fas fa-user-circle"></i>
+          <span>Login</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="page-title">File Validity</div>
+
+    <div class="form-section">
+      <span class="section-label">Search By</span>
+      <div class="radio-group">
+        <label class="radio-option">
+          <input type="radio" name="searchBy" value="file" checked onchange="updateSearchMode()"> File No.
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="searchBy" value="passport" onchange="updateSearchMode()"> Passport Information
+        </label>
+      </div>
+
+      <div class="radio-group" style="margin-top: 15px;">
+        <span style="font-size: 0.9rem; color: #666; width: 100px;">Select the Type</span>
+        <label class="radio-option">
+          <input type="radio" name="selectType" value="Residency" checked onchange="updateSearchMode()"> Residency
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="selectType" value="Visa" onchange="updateSearchMode()"> Visa
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="selectType" value="Emirates ID" onchange="updateSearchMode()"> Emirates ID
+        </label>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <span class="section-label" id="fileTypeSectionLabel">File Type</span>
+      <div id="fileTypeInputs">
+        <div id="fileTypeRadios" class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="fileType" value="unified" checked> Emirate Unified Number
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="fileType" value="fileNo"> File No.
+          </label>
+        </div>
+
+        <div class="input-wrapper" id="singleInputSection">
+          <label class="input-label" id="mainInputLabel">Emirate Unified Number *</label>
+          <input id="mainInput" placeholder="Emirate Unified Number">
+        </div>
+
+        <div class="input-wrapper" id="multiInputSection" style="display: none;">
+          <label class="input-label">File No. *</label>
+          <div class="grid-4">
+            <div class="multi-input">
+              <input id="fileDept" placeholder="Dept">
+              <span class="slash">/</span>
+            </div>
+            <div class="multi-input">
+              <input id="fileYear" placeholder="Year">
+              <span class="slash">/</span>
+            </div>
+            <div class="multi-input">
+              <input id="fileTypePart" placeholder="Type">
+              <span class="slash">/</span>
+            </div>
+            <input id="fileSeq" placeholder="Seq">
+          </div>
+        </div>
+
+        <!-- New Passport-specific section -->
+        <div id="passportInputSection" style="display: none;">
+          <div class="input-wrapper">
+            <label class="input-label">Passport No. *</label>
+            <input id="passportNo" placeholder="Passport No.">
+          </div>
+          <div class="input-wrapper">
+            <label class="input-label">Passport Expire Date *</label>
+            <input type="date" id="passportExpiry">
+          </div>
+        </div>
+
+        <div class="input-wrapper" id="natSection">
+          <label class="input-label">Nationality *</label>
+          <div class="nationality-wrapper">
+            <input class="nat-code" id="natCode" placeholder="" oninput="syncFromCode()">
+            <div class="nat-search-wrapper">
+              <input class="nat-search" id="natSearch" placeholder="Please Select" onfocus="showNatList()"
+                oninput="filterNatList()">
+              <div class="search-dropdown" id="natDropdown"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-wrapper" id="dobSection">
+          <label class="input-label">Date Of Birth *</label>
+          <input type="date" id="dobInput">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <span class="section-label">Verify</span>
+      <div class="captcha-container">
+        <div class="captcha-box" id="captchaBox" onclick="startVerification()">
+          <div class="captcha-icon-wrapper">
+            <div class="captcha-checkbox"></div>
+            <div class="captcha-spinner"></div>
+            <div class="captcha-check">✓</div>
+          </div>
+          <span class="captcha-text" id="captchaText">Verify you are human</span>
+          <div class="cloudflare-logo">
+            <img src="cloudflare-logo.png" width="60" style="margin-bottom: 5px;">
+            <div class="cloudflare-links">Privacy • Help</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-footer">
+      <button onclick="searchCandidate()" class="btn-search">
+        <span>🔍</span> Search
+      </button>
+    </div>
+
+    <div id="result" style="padding: 20px;"></div>
+  </div>
+
+
+  <footer class="main-footer-icp">
+    <div class="footer-content-icp">
+      <div class="footer-column-icp">
+        <h4>The Ministry</h4>
+        <ul>
+          <li><a href="#">ICA Terminology</a></li>
+          <li><a href="#">Archive</a></li>
+          <li><a href="#">ICA Email</a></li>
+          <li><a href="#">Suppliers'inquiries</a></li>
+        </ul>
+      </div>
+      <div class="footer-column-icp">
+        <h4>Using the website</h4>
+        <ul>
+          <li><a href="#">Sitemap</a></li>
+          <li><a href="#">Accessibility</a></li>
+          <li><a href="#">Help</a></li>
+          <li><a href="#">HappinessFormula</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-column-icp">
+        <h4>Information and Support</h4>
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Help</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-column-icp">
+        <h4>References</h4>
+        <ul>
+          <li><a href="#">Disclaimer</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Copyright</a></li>
+        </ul>
+      </div>
+      <div class="footer-brand-icp">
+        <div class="brand-logos-icp">
+          <img src="tawasul-logo.png" class="tawasul-logo" alt="171 Tawasul">
+        </div>
+        <div class="federal-authority-text">هيئة الاتحادية | Federal Authority</div>
+        <div class="toll-free-icp">Toll free: <b>651349725</b></div>
+        <div class="visitors-counter-icp">Visitors Counter: <b>1,234,567</b></div>
+      </div>
+    </div>
+    <div class="footer-bottom-icp">
+      <div class="copyright-text">© Copyright 2026</div>
+      <div class="social-icons-icp">
+        <span>Follow us on:</span>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="/"><i class="fas fa-home"></i> Home</a>
+        <a href="/browse-services">Public Services</a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script>
+    const nationalities = [
+      { code: '205', name: 'INDIA' },
+      { code: '201', name: 'PAKISTAN' },
+      { code: '202', name: 'BANGLADESH' },
+      { code: '210', name: 'UAE' },
+      { code: '215', name: 'EGYPT' },
+      { code: '220', name: 'HAITI' },
+      { code: '225', name: 'HOLY SEE (VATICAN)' },
+      { code: '230', name: 'HONDURAS' }
+    ];
+
+    let isVerified = false;
+
+    function showNatList() {
+      const dropdown = document.getElementById('natDropdown');
+      dropdown.style.display = 'block';
+      renderNatList(nationalities);
+    }
+
+    function renderNatList(list) {
+      const dropdown = document.getElementById('natDropdown');
+      dropdown.innerHTML = '';
+      list.forEach(item => {
+        const div = document.createElement('div');
+        div.textContent = item.name;
+        div.onclick = () => selectNat(item);
+        dropdown.appendChild(div);
+      });
+    }
+
+    function filterNatList() {
+      const query = document.getElementById('natSearch').value.toUpperCase();
+      const filtered = nationalities.filter(item => item.name.includes(query));
+      renderNatList(filtered);
+    }
+
+    function selectNat(item) {
+      document.getElementById('natCode').value = item.code;
+      document.getElementById('natSearch').value = item.name;
+      document.getElementById('natDropdown').style.display = 'none';
+    }
+
+    function syncFromCode() {
+      const code = document.getElementById('natCode').value.trim();
+      if (!code) {
+        document.getElementById('natSearch').value = "";
+        return;
+      }
+      const item = nationalities.find(n => n.code === code);
+      if (item) {
+        document.getElementById('natSearch').value = item.name;
+      } else {
+        document.getElementById('natSearch').value = "";
+      }
+    }
+
+    // Hide dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.nationality-wrapper')) {
+        document.getElementById('natDropdown').style.display = 'none';
+      }
+    });
+
+    function startVerification() {
+      if (isVerified) return;
+      const box = document.getElementById('captchaBox');
+      const text = document.getElementById('captchaText');
+      box.classList.add('loading');
+      text.textContent = 'Verifying...';
+      setTimeout(() => {
+        box.classList.remove('loading');
+        box.classList.add('success');
+        text.textContent = 'Success!';
+        isVerified = true;
+      }, 1500);
+    }
+
+    function updateSearchMode() {
+      const searchBy = document.querySelector('input[name="searchBy"]:checked').value;
+      const selectType = document.querySelector('input[name="selectType"]:checked').value;
+
+      const singleSection = document.getElementById('singleInputSection');
+      const multiSection = document.getElementById('multiInputSection');
+      const passportSection = document.getElementById('passportInputSection');
+      const natSection = document.getElementById('natSection');
+      const dobSection = document.getElementById('dobSection');
+      const fileTypeRadios = document.getElementById('fileTypeRadios');
+      const sectionLabel = document.getElementById('fileTypeSectionLabel');
+
+      // Reset visibility
+      singleSection.style.display = 'none';
+      multiSection.style.display = 'none';
+      passportSection.style.display = 'none';
+      fileTypeRadios.style.display = 'none';
+      natSection.style.display = 'block';
+      dobSection.style.display = 'block';
+      sectionLabel.textContent = "File Type";
+
+      if (searchBy === 'file') {
+        if (selectType === 'Visa') {
+          multiSection.style.display = 'block';
+          dobSection.style.display = 'none';
+        } else {
+          singleSection.style.display = 'block';
+          fileTypeRadios.style.display = 'flex';
+          document.getElementById('mainInputLabel').textContent = "Emirate Unified Number *";
+          document.getElementById('mainInput').placeholder = "Emirate Unified Number";
+        }
+      } else if (searchBy === 'passport') {
+        passportSection.style.display = 'block';
+        dobSection.style.display = 'none';
+        sectionLabel.textContent = "Passport Information";
+      }
+    }
+
+    function searchCandidate() {
+      if (!isVerified) return alert("Please complete the verification first.");
+      const searchBy = document.querySelector('input[name="searchBy"]:checked').value;
+      const type = document.querySelector('input[name="selectType"]:checked').value;
+      const dob = document.getElementById('dobInput').value;
+      const nationality = document.getElementById('natSearch').value;
+      const resultDiv = document.getElementById('result');
+
+      let body = { searchBy, type, dob, nationality };
+
+      if (searchBy === 'file' && type === 'Visa') {
+        body.fileDept = document.getElementById('fileDept').value.trim();
+        body.fileYear = document.getElementById('fileYear').value.trim();
+        body.fileTypePart = document.getElementById('fileTypePart').value.trim();
+        body.fileSeq = document.getElementById('fileSeq').value.trim();
+        if (!body.fileDept || !body.fileYear || !body.fileTypePart || !body.fileSeq) return alert("Please fill all File Number parts");
+      } else if (searchBy === 'passport') {
+        body.query = document.getElementById('passportNo').value.trim();
+        body.passportExpiry = document.getElementById('passportExpiry').value;
+        if (!body.query || !body.passportExpiry) return alert("Please fill all Passport details");
+      } else {
+        body.query = document.getElementById('mainInput').value.trim();
+        if (!body.query) return alert("Please enter the required information");
+      }
+
+      resultDiv.innerHTML = "";
+      const loader = document.getElementById('loadingOverlay');
+      loader.style.display = 'flex';
+
+      setTimeout(() => {
+        fetch('/search', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        })
+          .then(res => {
+            loader.style.display = 'none';
+            if (!res.ok) throw new Error('Not found');
+            return res.json();
+          })
+          .then(data => {
+            const fullFileNo = data.fileDept ? `${data.fileDept} / ${data.fileYear} / ${data.fileTypePart} / ${data.fileSeq}` : (data.fileNumber || '-');
+
+            resultDiv.innerHTML = `
+            <div class="result-container-icp">
+              <!-- Service Beneficiary Section -->
+              <div class="result-section-header-icp">Identification Information (Service Beneficiary)</div>
+              <div class="result-grid-icp">
+                <div class="result-item-icp">
+                  <span class="result-label-icp">File No. :</span>
+                  <span class="result-value-icp">${fullFileNo}</span>
+                </div>
+                <div class="result-item-icp">
+                  <span class="result-label-icp">Emirate Unified Number :</span>
+                  <span class="result-value-icp">${data.unifiedNumber || '-'}</span>
+                </div>
+              </div>
+
+              <!-- File Information Section -->
+              <div class="result-section-header-icp">File Information</div>
+              <div class="result-grid-icp">
+                <div class="result-item-icp">
+                  <span class="result-label-icp">File Status :</span>
+                  <span class="result-value-icp" id="resStatus">${data.fileStatus || 'ACTIVE'}</span>
+                </div>
+                <div class="result-item-icp">
+                  <span class="result-label-icp">File Issuance Date :</span>
+                  <span class="result-value-icp">${data.issuanceDate || '-'}</span>
+                </div>
+                <div class="result-item-icp">
+                  <span class="result-label-icp">File Expire Date :</span>
+                  <span class="result-value-icp">${data.expiryDate || '-'}</span>
+                </div>
+                <div class="result-item-icp">
+                
+                  
+              </div>
+              <div class="extension-link-icp">
+                <a href="/visa-extension">Apply for Visa extension from here</a>
+              </div>
+            </div>
+          `;
+          })
+          .catch(err => {
+            loader.style.display = 'none';
+            resultDiv.innerHTML = `
+            <div style="background:#fef2f2; border:1px solid #fee2e2; padding:20px; border-radius:8px; text-align:center">
+              <p style="color:#ef4444; font-weight:600">❌ Record not found or invalid details provided</p>
+              <p style="font-size:0.85rem; color:#666; margin-top:5px">Please check your inputs and try again.</p>
+            </div>
+          `;
+          });
+      }, 1500);
+    }
+
+    updateSearchMode();
+  </script>
+</body>
+
+</html>

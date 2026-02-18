@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | AL-HARAM PORTAL</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .admin-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid #e1e5eb;
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e1e5eb;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: #f8fafc;
+            color: #2b778c;
+            font-weight: 600;
+        }
+
+        .row-photo {
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            object-fit: cover;
+        }
+
+        .btn-delete {
+            background: #fee2e2;
+            color: #ef4444;
+            border: 1px solid #fecaca;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="page-title">Admin Management Panel</div>
+            <a href="/logout" class="btn-delete"
+                style="text-decoration: none; padding: 10px 20px; display: inline-block;">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </div>
+
+        <div class="admin-layout">
+            <section>
+                <div
+                    style="display: flex; justify-content: space-between; align-items: center; margin: 20px 20px 0 20px;">
+                    <h3 style="color: #444;">Register New Candidate</h3>
+                    <div class="lang-toggle-container">
+                        <button type="button" class="lang-btn active" id="btn-en">English</button>
+                        <button type="button" class="lang-btn" id="btn-ar">العربية</button>
+                    </div>
+                </div>
+
+                <form method="POST" action="/add" enctype="multipart/form-data" id="registerForm">
+                    <!-- Search By Section -->
+                    <div class="form-section">
+                        <span class="section-label">Search By</span>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="searchBy" value="file" checked> File No.
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="searchBy" value="passport"> Passport Information
+                            </label>
+                        </div>
+
+                        <div class="radio-group" style="margin-top: 15px;">
+                            <span style="font-size: 0.9rem; color: #666; width: 100px;">Select Type</span>
+                            <label class="radio-option">
+                                <input type="radio" name="type" value="Residency" checked onchange="updateFormMode()">
+                                Residency
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="type" value="Visa" onchange="updateFormMode()"> Visa
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="type" value="Emirates ID" onchange="updateFormMode()">
+                                Emirates ID
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- File Details Section -->
+                    <div class="form-section">
+                        <span class="section-label">File Details</span>
+                        <div class="grid-2">
+                            <!-- Single File Input -->
+                            <div class="input-wrapper" id="singleFileWrapper">
+                                <label class="input-label" id="lblFile">File Number *</label>
+                                <input name="fileNumber" placeholder="File Number">
+                            </div>
+
+                            <!-- 4-Part File Input -->
+                            <div class="input-wrapper" id="multiFileWrapper"
+                                style="display: none; grid-column: span 2;">
+                                <label class="input-label">File Number (Dept/Year/Type/Seq) *</label>
+                                <div class="grid-4">
+                                    <div class="multi-input">
+                                        <input name="fileDept" placeholder="Dept">
+                                        <span class="slash">/</span>
+                                    </div>
+                                    <div class="multi-input">
+                                        <input name="fileYear" placeholder="Year">
+                                        <span class="slash">/</span>
+                                    </div>
+                                    <div class="multi-input">
+                                        <input name="fileTypePart" placeholder="Type">
+                                        <span class="slash">/</span>
+                                    </div>
+                                    <input name="fileSeq" placeholder="Seq">
+                                </div>
+                            </div>
+
+                            <div class="input-wrapper">
+                                <label class="input-label" id="lblPassport">Passport Number *</label>
+                                <input name="passport" placeholder="Passport Number" required>
+                            </div>
+                            <div class="input-wrapper">
+                                <label class="input-label" id="lblPassportExpiry">Passport Expiry Date *</label>
+                                <input name="passportExpiry" type="date" required>
+                            </div>
+                            <div class="input-wrapper">
+                                <label class="input-label" id="lblVisa">Visa Number</label>
+                                <input name="visa" placeholder="Visa Number">
+                            </div>
+                            <div class="input-wrapper">
+                                <label class="input-label" id="lblUnified">Emirate Unified Number *</label>
+                                <input name="unifiedNumber" placeholder="Unified Number" required>
+                            </div>
+                            <div class="input-wrapper">
+                                <label class="input-label" id="lblNationality">Nationality *</label>
+                                <div class="nationality-wrapper">
+                                    <input class="nat-code" id="natCode" placeholder='' oninput="syncFromCode()">
+                                    <div class="nat-search-wrapper">
+                                        <input class="nat-search" id="natSearch" name="nationality"
+                                            placeholder="Please Select" onfocus="showNatList()"
+                                            oninput="filterNatList()" required>
+                                        <div class="search-dropdown" id="natDropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-wrapper">
+                                <label class="input-label" id="lblDob">Date of Birth *</label>
+                                <input name="dob" type="date" required>
+                            </div>
+                            <div class="input-wrapper">
+                                <label class="input-label" id="lblStatus">File Status</label>
+                                <select name="fileStatus">
+                                    <option value="USED">USED</option>
+                                    <option value="ACTIVE">ACTIVE</option>
+                                    <option value="EXPIRED">EXPIRED</option>
+                                </select>
+                            </div>
+                            <div class="input-wrapper">
+                                <label class="input-label" id="lblIssuance">File Issuance Date</label>
+                                <input name="issuanceDate" type="date">
+                            </div>
+                            <div class="input-wrapper">
+                                <label class="input-label" id="lblExpiry">File Expiry Date</label>
+                                <input name="expiryDate" type="date">
+                            </div>
+                            <div class="input-wrapper">
+                                <label class="input-label" id="lblLeaving">Last Date of Leaving</label>
+                                <input name="lastLeavingDate" type="date">
+                            </div>
+                        </div>
+                        <div class="input-wrapper" style="margin-top: 10px;">
+                            <label class="input-label" id="lblPhoto">Candidate Photo (JPG/PDF) *</label>
+                            <input type="file" name="photo" required>
+                        </div>
+                    </div>
+
+                    <div class="search-footer">
+                        <button type="submit" class="btn-search" id="btnAdd">Add Candidate</button>
+                    </div>
+                </form>
+            </section>
+
+            <section style="padding: 20px;">
+                <h3 style="color: #444; margin-bottom: 15px;">Active Records</h3>
+                <table id="candidatesTable">
+                    <thead>
+                        <tr>
+                            <th>Photo</th>
+                            <th>File #</th>
+                            <th>Passport</th>
+                            <th>Unified #</th>
+                            <th>Status</th>
+                            <th>Issuance</th>
+                            <th>Expiry</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="candidatesBody"></tbody>
+                </table>
+            </section>
+        </div>
+
+        <div style="padding: 20px; text-align: center; border-top: 1px solid #e1e5eb;">
+            <a href="/" class="btn-outline"
+                style="text-decoration: none; padding: 10px 20px; border: 1px solid #ccc; border-radius: 4px; color: #666;">Back
+                to Dashboard</a>
+        </div>
+    </div>
+
+    <script>
+        const nationalities = [
+            { code: '205', name: 'INDIA' },
+            { code: '201', name: 'PAKISTAN' },
+            { code: '202', name: 'BANGLADESH' },
+            { code: '210', name: 'UAE' },
+            { code: '215', name: 'EGYPT' },
+            { code: '220', name: 'HAITI' },
+            { code: '225', name: 'HOLY SEE (VATICAN)' },
+            { code: '230', name: 'HONDURAS' }
+        ];
+
+        function showNatList() {
+            const dropdown = document.getElementById('natDropdown');
+            dropdown.style.display = 'block';
+            renderNatList(nationalities);
+        }
+
+        function renderNatList(list) {
+            const dropdown = document.getElementById('natDropdown');
+            dropdown.innerHTML = '';
+            list.forEach(item => {
+                const div = document.createElement('div');
+                div.textContent = item.name;
+                div.onclick = () => selectNat(item);
+                dropdown.appendChild(div);
+            });
+        }
+
+        function filterNatList() {
+            const query = document.getElementById('natSearch').value.toUpperCase();
+            const filtered = nationalities.filter(item => item.name.includes(query));
+            renderNatList(filtered);
+        }
+
+        function selectNat(item) {
+            document.getElementById('natCode').value = item.code;
+            document.getElementById('natSearch').value = item.name;
+            document.getElementById('natDropdown').style.display = 'none';
+        }
+
+        function syncFromCode() {
+            const code = document.getElementById('natCode').value.trim();
+            if (!code) {
+                document.getElementById('natSearch').value = "";
+                return;
+            }
+            const item = nationalities.find(n => n.code === code);
+            if (item) {
+                document.getElementById('natSearch').value = item.name;
+            } else {
+                document.getElementById('natSearch').value = "";
+            }
+        }
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nationality-wrapper')) {
+                document.getElementById('natDropdown').style.display = 'none';
+            }
+        });
+
+        function updateFormMode() {
+            const type = document.querySelector('input[name="type"]:checked').value;
+            const single = document.getElementById('singleFileWrapper');
+            const multi = document.getElementById('multiFileWrapper');
+
+            if (type === 'Visa') {
+                single.style.display = 'none';
+                multi.style.display = 'block';
+            } else {
+                single.style.display = 'block';
+                multi.style.display = 'none';
+            }
+        }
+
+        function loadCandidates() {
+            fetch('/candidates')
+                .then(res => res.json())
+                .then(data => {
+                    const tbody = document.getElementById('candidatesBody');
+                    tbody.innerHTML = '';
+                    data.forEach(c => {
+                        const isPdf = c.photo.toLowerCase().endsWith('.pdf');
+                        const photoHtml = isPdf
+                            ? `<a href="/upload/${c.photo}" target="_blank" style="color:#2b778c; font-size:0.7rem;">PDF</a>`
+                            : `<img src="/upload/${c.photo}" class="row-photo">`;
+
+                        const fileNo = c.fileDept ? `${c.fileDept}/${c.fileYear}/${c.fileTypePart}/${c.fileSeq}` : (c.fileNumber || '-');
+
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td>${photoHtml}</td>
+                            <td>${fileNo}</td>
+                            <td>${c.passport}</td>
+                            <td>${c.unifiedNumber || '-'}</td>
+                            <td>${c.fileStatus || 'USED'}</td>
+                            <td>${c.issuanceDate || '-'}</td>
+                            <td>${c.expiryDate || '-'}</td>
+                            <td><button onclick="deleteCandidate('${c.passport}')" class="btn-delete">Delete</button></td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                });
+        }
+
+        function deleteCandidate(passport) {
+            if (!confirm('Are you sure?')) return;
+            fetch('/delete', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ passport })
+            }).then(res => res.json()).then(data => {
+                if (data.success) loadCandidates();
+            });
+        }
+
+        loadCandidates();
+        updateFormMode();
+
+        const btnEn = document.getElementById('btn-en');
+        const btnAr = document.getElementById('btn-ar');
+        const form = document.getElementById('registerForm');
+
+        const translation = {
+            en: {
+                title: "Register New Candidate",
+                file: "File Number *",
+                passport: "Passport Number *",
+                passportExpiry: "Passport Expiry Date *",
+                visa: "Visa Number",
+                unified: "Emirate Unified Number *",
+                nationality: "Nationality *",
+                dob: "Date of Birth *",
+                photo: "Candidate Photo (JPG/PDF) *",
+                add: "Add Candidate"
+            },
+            ar: {
+                title: "تسجيل مرشح جديد",
+                file: "رقم الملف *",
+                passport: "رقم جواز السفر *",
+                passportExpiry: "تاريخ انتهاء جواز السفر *",
+                visa: "رقم التأشيرة",
+                unified: "الرقم الموحد للإمارات *",
+                nationality: "الجنسية *",
+                dob: "تاريخ الميلاد *",
+                photo: "صورة المرشح (JPG/PDF) *",
+                add: "إضافة مرشح"
+            }
+        };
+
+        function setLanguage(lang) {
+            const isAr = lang === 'ar';
+            btnAr.classList.toggle('active', isAr);
+            btnEn.classList.toggle('active', !isAr);
+            form.classList.toggle('rtl', isAr);
+
+            document.getElementById('lblFile').textContent = translation[lang].file;
+            document.getElementById('lblPassport').textContent = translation[lang].passport;
+            document.getElementById('lblPassportExpiry').textContent = translation[lang].passportExpiry;
+            document.getElementById('lblVisa').textContent = translation[lang].visa;
+            document.getElementById('lblUnified').textContent = translation[lang].unified;
+            document.getElementById('lblNationality').textContent = translation[lang].nationality;
+            document.getElementById('lblDob').textContent = translation[lang].dob;
+            document.getElementById('lblPhoto').textContent = translation[lang].photo;
+            document.getElementById('btnAdd').textContent = translation[lang].add;
+
+            form.querySelectorAll('input:not([type="file"]):not([type="date"])').forEach(input => {
+                if (input.name === 'nationality') return; // Skip special searchable input
+                input.placeholder = translation[lang][input.name] || input.placeholder;
+            });
+        }
+
+        btnEn.addEventListener('click', () => setLanguage('en'));
+        btnAr.addEventListener('click', () => setLanguage('ar'));
+    </script>
+</body>
+
+</html>

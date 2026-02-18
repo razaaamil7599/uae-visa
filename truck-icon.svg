@@ -1,0 +1,22 @@
+<svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Truck Body -->
+  <path d="M20 8H17V5C17 4.45 16.55 4 16 4H4C3.45 4 3 4.45 3 5V14H20V8Z" fill="#bfa36a" fill-opacity="0.2" stroke="#bfa36a" stroke-width="1.2"/>
+  <rect x="3" y="4" width="13" height="10" stroke="#bfa36a" stroke-width="1.2"/> <!-- Cargo area -->
+  <path d="M16 8H20V14H16V8Z" stroke="#bfa36a" stroke-width="1.2"/> <!-- Cab -->
+  <path d="M20 8L22 14H20" stroke="#bfa36a" stroke-width="1.2"/> <!-- Sloped front (optional, sticking to boxy per image) -->
+  
+  <!-- Redoing to match the solid looking filled shape in image more closely but keeping outline style for consistency if needed, 
+       actually the image shows a filled shape. Let's do a solid fill with the gold color to match the image style provided -->
+  <path d="M1 14.5C1 14.5 2 14.5 3 14.5" stroke="#bfa36a" stroke-width="1.2"/> 
+  
+  <!-- Wheels -->
+  <circle cx="7" cy="15" r="2" stroke="#bfa36a" stroke-width="1.2"/>
+  <circle cx="17" cy="15" r="2" stroke="#bfa36a" stroke-width="1.2"/>
+  
+  <!-- Re-drawing based on the blurry image which looks like a solid truck shape -->
+  <path d="M16 6H4C3.4 6 3 6.4 3 7V13H16V6Z" stroke="#bfa36a" stroke-width="1.2"/>
+  <path d="M16 9H19C19.6 9 20 9.4 20 10V13H16V9Z" stroke="#bfa36a" stroke-width="1.2"/>
+  
+  <!-- Window -->
+  <path d="M17 9.5H19V11H17V9.5Z" fill="#bfa36a" fill-opacity="0.5"/>
+</svg>

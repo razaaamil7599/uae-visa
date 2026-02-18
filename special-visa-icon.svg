@@ -1,0 +1,18 @@
+<svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Hand holding passport -->
+  <path d="M9 16V22" stroke="#bfa36a" stroke-width="1.2" stroke-linecap="round"/>
+  <path d="M6 17V20" stroke="#bfa36a" stroke-width="1.2" stroke-linecap="round"/>
+  <path d="M12 4H8C6.9 4 6 4.9 6 6V18" stroke="#bfa36a" stroke-width="1.2" stroke-linecap="round"/>
+  <path d="M12 4H16C17.1 4 18 4.9 18 6V14" stroke="#bfa36a" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="12" y1="13" x2="15" y2="13" stroke="#bfa36a" stroke-width="1.2" stroke-linecap="round"/>
+  
+  <!-- Globe symbol inside passport -->
+  <circle cx="12" cy="9" r="3" stroke="#bfa36a" stroke-width="1.2"/>
+  <path d="M12 6C12 6 10 7.5 10 9C10 10.5 12 12 12 12" stroke="#bfa36a" stroke-width="1.2"/>
+  <path d="M12 6C12 6 14 7.5 14 9C14 10.5 12 12 12 12" stroke="#bfa36a" stroke-width="1.2"/>
+  <line x1="9" y1="9" x2="15" y2="9" stroke="#bfa36a" stroke-width="1.2"/>
+  
+  <!-- Checkmark circle overlay -->
+  <circle cx="18" cy="7" r="3.5" fill="white" stroke="#bfa36a" stroke-width="1.2"/>
+  <path d="M16.5 7L17.5 8L19.5 6" stroke="#bfa36a" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

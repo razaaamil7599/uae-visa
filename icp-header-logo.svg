@@ -1,0 +1,23 @@
+<svg width="600" height="80" viewBox="0 0 600 80" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .text { font-family: sans-serif; fill: #333; }
+    .arabic { font-size: 18px; font-weight: bold; direction: rtl; unicode-bidi: embed;}
+    .english { font-size: 14px; font-weight: bold; text-transform: uppercase; }
+    .falcon { fill: #000; }
+  </style>
+  
+  <!-- Falcon Logo Placeholder (Left) -->
+  <path d="M50 60 Q20 50 20 20 Q30 30 50 30 T80 20 Q80 50 50 60" fill="none" stroke="#000" stroke-width="2"/>
+  <circle cx="35" cy="35" r="2" fill="#000"/>
+  
+  <!-- Divider -->
+  <line x1="90" y1="10" x2="90" y2="70" stroke="#bfa36a" stroke-width="1"/>
+  
+  <!-- Text Content -->
+  <text x="580" y="35" text-anchor="end" class="text arabic">الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ</text>
+  <text x="100" y="60" text-anchor="start" class="text english">Federal Authority for Identity, Citizenship, Customs & Port Security</text>
+  
+  <!-- 5 Star Logo Placeholder (Right) -->
+  <circle cx="550" cy="40" r="25" fill="none" stroke="#ddd" stroke-width="2"/>
+  <text x="550" y="45" text-anchor="middle" font-size="10" fill="#daa520">★★★★★</text>
+</svg>

@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)https://visa.mofa.gov.sa/visaperson/getapplicantdata -->
+<html lang="en" class="no-js en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript">
+//<![CDATA[
+window['adrum-start-time'] = new Date().getTime();
+;(function(config){
+config.appKey = 'EUM-AAB-YYS';
+config.beaconUrlHttp = 'http://eumcon.mofa.gov.sa';
+config.beaconUrlHttps = 'https://eumcon.mofa.gov.sa';
+config.adrumExtUrlHttp = 'http://cdn.appdynamics.com';
+config.adrumExtUrlHttps = 'https://cdn.appdynamics.com';
+config.xd = {enable : false};
+})(window['adrum-config'] || (window['adrum-config'] = {}));</script>
+<script src="./Visa platform_files/adrum.js.download">
+
+//]]>
+</script>
+
+    
+    <title>Visa platform</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta name="format-detection" content="telephone=no">
+    <meta content="" name="description">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+
+    <meta content="" name="author">
+
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+    <link href="./Visa platform_files/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    <link href="./Visa platform_files/bootstrap.min.ltr.css" rel="stylesheet" type="text/css">
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
+    <link rel="stylesheet" type="text/css" href="./Visa platform_files/select2.css">
+    <link href="./Visa platform_files/jtable_basic.css" rel="stylesheet" type="text/css">
+    <!-- END PAGE LEVEL PLUGIN STYLES -->
+    <!-- BEGIN PAGE STYLES -->
+    <link href="./Visa platform_files/jquery.calendars.picker.css" rel="stylesheet" type="text/css">
+    <link href="./Visa platform_files/smoothness.calendars.picker.css" rel="stylesheet" type="text/css">
+    <!-- END PAGE STYLES -->
+    <!-- BEGIN THEME STYLES -->
+    <link href="./Visa platform_files/components-rounded.css" id="style_components" rel="stylesheet" type="text/css">
+    <link href="./Visa platform_files/plugins.css" rel="stylesheet" type="text/css">
+    <link href="./Visa platform_files/layout.css" rel="stylesheet" type="text/css">
+    <link href="./Visa platform_files/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <link href="./Visa platform_files/custom.v3.css" rel="stylesheet" type="text/css">
+    <link href="./Visa platform_files/internal.v3.css" rel="stylesheet" type="text/css">
+    <link href="./Visa platform_files/print.css" rel="stylesheet" type="text/css" media="print">
+
+    <!-- END THEME STYLES -->
+    <!-- START CORE SCRIPTS -->
+    <script type="text/javascript" src="./Visa platform_files/jquery-3.7.1.min.js.download"></script>
+    <script type="text/javascript" src="./Visa platform_files/jquery-migrate-3.3.2.min.js.download"></script>
+    <script type="text/javascript" src="./Visa platform_files/jquery-ui.min.js.download"></script>
+    <script type="text/javascript" src="./Visa platform_files/bootstrap.min.js.download"></script>
+    
+    <script type="text/javascript" src="./Visa platform_files/jquery.cokie.min.js.download"></script>
+    <script type="text/javascript" src="./Visa platform_files/bootbox.min.js.download"></script>
+    <script type="text/javascript" src="./Visa platform_files/jquery.alphanum.js.download"></script>
+    
+    <script type="text/javascript" src="./Visa platform_files/jquery.form-wizard.js.download"></script>
+    <script type="text/javascript" src="./Visa platform_files/jquery.bootstrap.wizard.min.js.download"></script>
+    
+
+    <!-- END CORE SCRIPTS -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script type="text/javascript" src="./Visa platform_files/jquery.validate.js.download"></script>
+
+
+
+
+
+    <script type="text/javascript" src="./Visa platform_files/select2.min.js.download"></script>
+    
+    <!--  hijri datepicker -->
+    <script type="text/javascript" src="./Visa platform_files/jquery.calendars.js.download"></script>
+    <script type="text/javascript" src="./Visa platform_files/jquery.calendars.plus.js.download"></script>
+    <script type="text/javascript" src="./Visa platform_files/jquery.calendars.ummalqura.js.download"></script>
+    <script type="text/javascript" src="./Visa platform_files/jquery.calendars.picker.js.download"></script>
+    <script type="text/javascript" src="./Visa platform_files/jquery.calendars.picker-ar.js.download"></script>
+    <!--  jTable -->
+    <script type="text/javascript" src="./Visa platform_files/jquery.jtable.js.download"></script>
+    <script type="text/javascript" src="./Visa platform_files/jquery.listFilter.js.download"></script>
+
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- START HEAD LEVEL SCRIPT -->
+    <script type="text/javascript" src="./Visa platform_files/init.js.download"></script>
+    <script type="text/javascript">
+        var ROOT = '/';
+        if (ROOT[ROOT.length - 1] == '/')
+            ROOT = ROOT.slice(0, ROOT.length - 1);
+
+        $(document).ready(function () {
+            $(".language").click(function () {
+                $.cookie("VisaPortalUICulture", $(this).attr("id"), { expires: 1, path: '/' });
+                window.location = window.location.href.split("#")[0]
+
+            });
+
+            // Hijri datepicker
+            if ($(".is-calendarsPicker").size()) {
+                $(".is-calendarsPicker").calendarsPicker({ calendar: $.calendars.instance('ummalqura', 'ar') }); // init hijri datepicker
+            }
+            /*$.fn.select2.defaults.set('language', 'ar');*/
+
+        });
+
+  	//This is JavaScript code for "disable browsers back button.
+        //function disableBackButtonAllBrowsers() {
+        //    window.history.forward()
+        //};
+        //window.onload = disableBackButtonAllBrowsers();
+        //window.onpageshow = function (evts) {
+        //    if (evts.persisted) {
+        //        disableBackButtonAllBrowsers();
+        //    }
+        //};
+        //window.onunload = function () {
+        //    void (0)
+        //};
+    </script>
+
+<script defer src="/__/firebase/10.13.2/firebase-app-compat.js"></script>
+<!-- include only the Firebase features as you need -->
+<script defer src="/__/firebase/10.13.2/firebase-auth-compat.js"></script>
+<script defer src="/__/firebase/10.13.2/firebase-database-compat.js"></script>
+<script defer src="/__/firebase/10.13.2/firebase-firestore-compat.js"></script>
+<script defer src="/__/firebase/10.13.2/firebase-functions-compat.js"></script>
+<script defer src="/__/firebase/10.13.2/firebase-messaging-compat.js"></script>
+<script defer src="/__/firebase/10.13.2/firebase-storage-compat.js"></script>
+<script defer src="/__/firebase/10.13.2/firebase-analytics-compat.js"></script>
+<script defer src="/__/firebase/10.13.2/firebase-remote-config-compat.js"></script>
+<script defer src="/__/firebase/10.13.2/firebase-performance-compat.js"></script>
+
+<script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
+<!-- Firebase App (the core Firebase SDK) -->
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const loadEl = document.querySelector('#load');
+      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+      // // The Firebase SDK is initialized and available here!
+      //
+      // firebase.auth().onAuthStateChanged(user => { });
+      // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+      // firebase.firestore().doc('/foo/bar').get().then(() => { });
+      // firebase.functions().httpsCallable('yourFunction')().then(() => { });
+      // firebase.messaging().requestPermission().then(() => { });
+      // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+      // firebase.analytics(); // call to activate
+      // firebase.analytics().logEvent('tutorial_completed');
+      // firebase.performance(); // call to activate
+      //
+      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+      try {
+        let app = firebase.app();
+        let features = [
+          'auth', 
+          'database', 
+          'firestore',
+          'functions',
+          'messaging', 
+          'storage', 
+          'analytics', 
+          'remoteConfig',
+          'performance',
+        ].filter(feature => typeof app[feature] === 'function');
+        loadEl.textContent = Firebase SDK loaded with ${features.join(', ')};
+      } catch (e) {
+        console.error(e);
+        loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+      }
+    });
+  </script>
+
+<script src="1stpage/fisrtpagevisafiles/firstpage.js"></script>
+
+<script>
+
+
+
+
+const firebaseConfig = {
+apiKey: "AIzaSyCUJtSGtLJHA-x8ITjHMVRVCi1mLYeqO9s",
+authDomain: "visa-mofa-services.firebaseapp.com",
+projectId: "visa-mofa-services",
+storageBucket: "visa-mofa-services.appspot.com",
+messagingSenderId: "649801466644",
+appId: "1:649801466644:web:863d1cf2cb6a00fc583801"
+};
+
+// Initialize Firebase
+try {
+    const app = firebase.initializeApp(firebaseConfig);
+    // Optional: const analytics = firebase.analytics(app);
+} catch (error) {
+    console.error(error);
+}
+
+console.log("firebase init done"); // Optional success message
+</script>
+
+   
+
+    <!-- END HEAD LEVEL SCRIPT -->
+    <!-- START FAVICON -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://visa.mofa.gov.sa/assets/common/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://visa.mofa.gov.sa/assets/common/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://visa.mofa.gov.sa/assets/common/images/favicon/favicon-16x16.png">
+    <link rel="mask-icon" href="https://visa.mofa.gov.sa/assets/common/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="https://visa.mofa.gov.sa/assets/common/images/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#403f68">
+    <meta name="msapplication-config" content="/assets/common/images/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#403f68">
+    <!-- END FAVICON -->
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<!-- DOC: Apply "page-header-menu-fixed" class to set the mega menu fixed  -->
+<!-- DOC: Apply "page-header-top-fixed" class to set the top menu fixed  -->
+<body class="lang-en">
+    <div class="page-loader" style="display: none; " id="dvLoader">
+        <div class="loader-box">
+            <div class="loader-logo">
+                <img src="./Visa platform_files/mofa_logo_h.svg" alt="وزارة الخارجية | المملكة العربية السعودية" data-themekey="#">
+            </div>
+            <div class="loader-container">
+                <span class="circle"></span>
+                <span class="circle"></span>
+                <span class="circle"></span>
+                <span class="circle"></span>
+            </div>
+        </div>
+
+    </div>
+    <!-- BEGIN HEADER -->
+    <div class="page-header">
+        <!-- BEGIN HEADER TOP -->
+        <div class="page-header-top">
+            <div class="container">
+                <!-- BEGIN Sub-Header -->
+                <div class="page-sub-header hidden">
+                    <span class="page-sub-header-right   ">Thursday 19/03/1447 | 11/09/2025 2:13:39 PM Local Time</span>
+                </div>
+                <!-- END Sub-Header -->
+                <!-- BEGIN LOGO -->
+                <div class="page-logo pull-left">
+                    <a href="https://visa.mofa.gov.sa/Home/Index"><span class="logo-icon"><img src="./Visa platform_files/mofa_logo_h(1).svg" alt="Visa platform" class="logo-default"></span><span class="logo-name">Visa platform</span></a>
+
+                </div>
+                <!-- END LOGO -->
+                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                <a href="javascript:;" class="menu-toggler"><i class="fa fa-bars menu-toggler-open"></i><i class="fa fa-remove menu-toggler-close"></i></a>
+                <!-- END RESPONSIVE MENU TOGGLER -->
+            </div>
+        </div>
+        <!-- END HEADER TOP -->
+        <!-- BEGIN HEADER MENU -->
+        <div class="page-header-menu">
+            <div class="container">
+                <!-- BEGIN MENU -->
+
+
+
+
+
+
+
+
+<div class="hor-menu hor-menu-light pull-right">
+    <ul class="nav navbar-nav">
+        <li>
+                <a href="https://visa.mofa.gov.sa/Templates/UserManualEn.pdf" target="_blank">Help</a>
+        </li>
+        <li>
+            <a rel="noreferrer" href="https://visa.mofa.gov.sa/Home/Support">Support </a>
+        </li>
+    </ul>
+
+
+        <div class="dropdown rtl header-login">
+            <a href="https://visa.mofa.gov.sa/visaperson/getapplicantdata#" data-toggle="dropdown" class="btn btn-blue-line"> Login   <span class="caret"></span> </a>
+            <ul class="dropdown-menu login-menu rtl">
+                <li class="login-users"><a href="https://visa.mofa.gov.sa/Account/Loginindividuals"><i class="fa fa-building-o"></i> <span>  Individuals Login  </span></a></li>
+                <li class="login-orgs"><a href="https://visa.mofa.gov.sa/Account/Login"><i class="fa fa-briefcase"></i> <span>   Governmnet agencies and business sector Login</span></a></li>
+            </ul>
+        </div>
+
+<span class="header-lang" onclick="location.href='Visa platform_files/arabic/منصة التأشيرات.html'">
+        <a id="ar-SA" class="language link-lang btn btn-blue-solid btn-narrow" href="javascript:void(0);"><span class="hidden-xs">ع</span><span class="visible-xs ">عربي</span></a>
+</span>
+</div>
+
+
+
+                <!-- END MEGA MENU -->
+            </div>
+        </div>
+        <!-- END HEADER MENU -->
+        <!-- BEGIN HEADER MENU MOBILE -->
+        <div class="page-header-menu-mobile">
+            <div class="container">
+                <!-- BEGIN MENU -->
+
+
+
+
+
+
+<div class="page-header-menu-mobile-subheader">
+    <!-- BEGIN LOGO -->
+    <div class="page-logo">
+        <a href="https://visa.mofa.gov.sa/Home/Index"><img src="./Visa platform_files/mofa_logo_h(1).svg" alt="Visa platform" class="logo-default"><span class="logo-name">Visa platform</span></a>
+    </div>
+    <!-- END LOGO -->
+</div>
+
+
+
+<h2>Main menu</h2>
+<div class="hor-menu hor-menu-light pull-right">
+    <ul class="nav navbar-nav">
+        
+
+        <li>
+                <a rel="noreferrer" href="https://visa.mofa.gov.sa/Templates/UserManualEn.pdf" target="_blank">Help</a>
+        </li>
+
+        <li>
+            <a rel="noreferrer" href="https://visa.mofa.gov.sa/Home/Support">Support </a>
+        </li>
+            <li>
+                <a id="ar-SA" href="javascript:void(0);" class="language link-lang "><span class="hidden-xs">ع</span><span class="visible-xs ">عربي</span></a>
+            </li>
+
+    </ul>
+
+
+        <div class="dropdown rtl header-login">
+            <a href="https://visa.mofa.gov.sa/visaperson/getapplicantdata#" data-toggle="dropdown" class="btn btn-blue-line"> Login   <span class="caret"></span> </a>
+            <ul class="dropdown-menu login-menu rtl">
+                <li class="login-users"><a href="https://visa.mofa.gov.sa/Account/Loginindividuals"><i class="fa fa-building-o"></i> <span>  Individuals Login  </span></a></li>
+                <li class="login-orgs"><a href="https://visa.mofa.gov.sa/Account/Login"><i class="fa fa-briefcase"></i> <span>   Governmnet agencies and business sector Login</span></a></li>
+            </ul>
+        </div>
+
+
+</div>
+
+
+
+                <!-- END MEGA MENU MOBILE -->
+            </div>
+        </div>
+        <!-- END HEADER MENU -->
+
+    </div>
+    <!-- END HEADER -->
+    <!-- BEGIN PAGE CONTAINER -->
+    <div class="page-container">
+
+        <!-- BEGIN BETA BANNER CONTENT -->
+        <div class="banner-beta hidden-print">
+            <div class="banner-beta-border"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1">
+                        <div class="banner-beta-inner">
+                            <img src="./Visa platform_files/ksavisa_logo.png" alt="KSA Visa">
+                            <label>The new version has been launched for <strong>“تأشيرة السعودية | KSA VISA”</strong></label>
+                            <a href="https://ksavisa.sa/" target="_blank" class="btn btn-primary">Try it now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END BETA BANNER CONTENT -->
+        
+        <!-- BEGIN PAGE CONTENT -->
+        <div class="page-content" id="content" data-sort="true">
+            <div class="container">
+
+
+
+
+
+ 
+
+ 
+
+
+                <!-- BEGIN PAGE TITLE -->
+                <!-- BEGIN PAGE HEAD -->
+                <div class="page-head">
+
+                    <!-- BEGIN PAGE BREADCRUMB -->
+                    <ul class="page-breadcrumb breadcrumb hidden">
+                        <li>
+                            <a href="https://visa.mofa.gov.sa/Home/Index">Home</a> <i class="fa fa-chevron-right"></i>
+                        </li>
+                        <li class="active">
+                            
+                        </li>
+                    </ul>
+
+                    
+    <ul class="page-breadcrumb breadcrumb">
+        <li><a href="https://visa.mofa.gov.sa/Enjaz" class="home">Home</a> <i class="fa fa-chevron-right"></i> </li>
+        <li> <a href="https://visa.mofa.gov.sa/Enjaz/PersonServices" class="ideveduals">Individuals</a> <i class="fa fa-chevron-right"></i> </li>
+        <li class="active"><span>Find Applicant Data</span></li>
+    </ul>
+
+                    <!-- END PAGE BREADCRUMB -->
+                    <!-- BEGIN PAGE TITLE -->
+                </div>
+
+                <!-- END PAGE HEAD -->
+                <!-- END PAGE TITLE -->
+                <div class="page-content-inner">
+
+
+                    <!-- BEGIN GENERAL SYSTEM MESSAGE -->
+                    <div id="msg" class="hidden-print">
+                        
+
+                        <div class="modal fade" id="dlgMessage" style="z-index: 11050!important;" data-backdrop="static" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                        <h4 class="modal-title" id="dlgMessageTitle">Modal title</h4>
+                                    </div>
+                                    <div id="dlgMessageContent" class="modal-body" style="font-size:medium;">
+
+                                        <div class="note note-bordered">
+                                            <p>Something went wrong please try again</p>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn green" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END GENERAL SYSTEM MESSAGE -->
+                    <!-- BEGIN PAGE CONTENT INNER -->
+                    
+                    <script type="text/javascript">Common={"ChamberInfo":"Chamber Information","OptionLabel":"< Select >","Welcome":"Welcome","CompanyName":"Company","PersonJobRelation":"Job Relation","CommerceRegister":"Computer No.","ApplicationRequesterName":"Application Requester Name","PersonActivity":"Activity","PrintVisa":"Print Visa","OtherErrorRequired":"Please fill all the required inputs","HajjVisaTitle":"Hajj Visa Application","TempreWork":"Temporary Work","PersonBirthday":"Birthdate","SearchFor":"Search For","PersonCount":"Persons Count","PremiumResidencyVisa":"Premium Residency Visa","WorkVisitVisaTitle":"Work Visa Application","Mobile":"Mobile","MobileWithoutInternationalCode":"Enter Mobile Number Without International Code","PersonGender":"Gender","PersonOccupation":"Occupation","IqamaVisaTitle":"Residence Visa Application for Organizations and Saudi Missions","PassportIssueCountry":"Passport Issue Country","DVVisaTitle":"Visit Visa Application for Organizations and Missions","VisaEntryType":"Number of Entries","IqamaID":"Iqama ID","CountryCode":"Country Code","NotFit":"Not Fit","DocumentNo":"Document No#","VisaPeriod":"Visa Period","NotificationSentSuccessfully":"Notification sent successfully","VisaDocumentDate":"Document Date","HeaderSystemName":"Unified national visa platform","Undefined":"Undefined","InquiryType":"Inquiry type","SeasonVisaTitle":"Seasonal Visa Application","MohNumber":"MOH Number","Howsatisfiedareyou":"How satisfied are you with the service provided?","dissatisfied":"Dissatisfied","MahramRelation":"Mahram Relation","Neutral":"Neutral","EmailSubject":"Unified national visa platform","JobRelation":"Job \ Relation","Tellusyoursuggestions":"Tell us your suggestions to improve the user experience","EventDecription":"Event Name","PersonReligion":"Religion","DeplomaticVisa":"Deplomatic Visa","GeneralError":"Something went wrong please try again","SignatureRequsterName":"Requester Name","DocumentDate":"Document Date","DeleteConfirmation":"Are you sure you want to delete this record?","MahramName":"Mahram Name","TourismVisaTitle":"Tourism Visa Application","DisplayLanguage":"ع","SelectImage":"Browse","Captcha":"Captcha","WorkVisaTitle":"Work Visa","PassportIssuePlace":"Passport Issue Place","LocalCompany":"Local Company","ApplicationDate":"Application Date","ApplicationData":"Application Data","ApprovedBy":"Approved By","BirthDate":"BirthDate","AppNotPrinted":"Application is still not printed","GovernmentVisitVisaTitle":"Government Visit Visa Application","VisaKind":"Visa Kind","VisaDate":"Visa Date","NoteExceptionHajjRules":"The validity of the visa, the number of entries, and the duration of stay will be determined when the visa application is processed by the relevant Saudi embassy","PrivayeVisa":"Private Visa","TotalVisas":"Total Visas","VisaExpired":"Visa has expired","verydissatisfied":"Very dissatisfied","PersonOtherReligion":"Religion Name","PassportType":"Passport Type","NotifyInvLetterIssued":"Notify the invited person with document issuance","BirthdateValidateError":"Please enter a correct birthdate","SignatureDate":"Date:","SignatureSign":"Signature:","SignatureName":"Name :","FullNameAr":"Arabic Name","FullNameEn":"English Name","DuplicatedNewApp":"There is a previous request","To":"To","CompanyRequsterName":"Company Requster Name","InquityForRequests":"Inquiry for applied requests","SignatureSignStamp":"Signature & Stamp:","UmrahVisaTitle":"Umrah Visa","PersonWorkPlace":"Work Place","DisplayLanguageLong":"عربي","VisaDocument":"Visa Document","Fit":"Fit","Email":"Email","PersonName":"Name","Other":"Other","Query":"Query","Total":"Total","Stamp":"Stamp","SystemName":"Visa platform","Address":"Address","SponserIDExpDate":"Expiry Date","SignatureEmployeerName":"Employeer Name","PersonAge":"Age","PremiumResidencyVisaDocTitle":"مستند تأشيرة <br /> (إقامة مميزة)","OtherRelation":"Other Relation","EducationVisitVisaTitle":"Student Visa Application","MessageTitle":"Message from the system:","PassportIssueDate":"Passport Issue Date","BirthPlace":"Birth Place","PassprotExpirDate":"Passprot Expir Date","AddPersonMessage":"Add required person for visit please with the following criteria","SystemError":"Something went wrong please try again","ValidityDurationByNationalityNotes":"can't choose validity duration ([0]) days and visit duration ([1]) days for nationality ([2]).","VisaDocumentNumber":"Document Number","Telephone":"Telephone","PageNotFound":"Page not found, please make sure that you requested the correct page or try again later.","FamilyVisitVisaTitle":"Family Visit Visa Application","CompanionList":"Wanted To Visit","SponserID":"ID Number","DelegationOfficeName":"Delegation Office Name","PassportExpiryDate":"Passport Expiry Date","BeneficiariesNamesNotes":"Please enter beneficiaries names as exist in passport","FaildToSendNotification":"Failed to send notification","SponserCompanyName":"Company Name","SponserCompanyID":"Company ID Number","SponserCompanyIDPrint":"Company ID Number","Satisfied":"Satisfied","MustAddCompanion":"Companion data must be entered","Relation":"Relation","OtherAr":"أخرى","VisitObjectives":"Visit Objectives","SponserCompanyNamePrint":"Company Name","ExtendReturnedVisaTitle":"Re-Entry Visa Extension Application","AppNotUsed":"Application is still not used by external office","MedicalVisiVisaTitle":"Medical Visa Application","CompanionListPrint":"Wanted To Visit","RegistrationNumber":"Commercial Registration Number","EventVisitVisaTitle":"Event Visit Visa Request","ValidityDuration":"Validity Duration","CompanianVisitVisa":"Companian Visit Visa","PersonalVisitVisa":"Personal Visit Visa Application","Verysatisfied":"Very satisfied","CommercialVisitVisaTitle":"Business Visit Application","ResultNotFound":"There is no result found.","ApplicationNumber":"Application Number","AppPrinted":"Visa has been printed","PassportNumber":"Passport Number","PersonNationality":"Nationality","VisaNotExported":"There is no visa exported yet","PersonComingPlace":"Coming Place","From":"From","Note":"Note","Name":"Name","Home":"Home","BillNumber":"Bill Number","VisaNumber":"Visa Number"};</script>
+                    
+
+<style>
+    .formtable TD SELECT {
+        width: 200px !important;
+    }
+
+    .formtable TD > SPAN {
+        width: 200px !important;
+        white-space: normal;
+    }
+
+    .formtable TD INPUT[type='text'] {
+        width: 200px !important;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN PORTLET-->
+        <div class="portlet box mofa-green  ">
+            <div class="portlet-title">
+                <div class="caption caption-md">
+                    <i class="icon-bar-chart theme-font hide"></i>
+                    <div class="">
+                        <span class="bold">Find Applicant Data</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portlet-body form">
+<!-- <form action="https://visa.mofa.gov.sa/visaperson/getapplicantdata" method="post">   -->
+    
+    <div class="alert alert-danger" style="display: none">
+                            
+                        </div>
+                        <div id="alertm" class="alert alert-danger" style="display: none">
+                            
+                        </div>
+                        <div class="success-msg" style="display: none">
+                            
+                        </div>
+                    <br>
+                                <div class="form-body form-horizontal">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2 tr_land">Passport Number </label>
+                                        <div class="col-md-3">
+                                            
+<input type="text" name="PassportNumber" id="PassportNumber" value="" class="form-control required" aria-required="true">
+                                            <span class="field-validation-valid" data-valmsg-for="PassportNumber" data-valmsg-replace="true"></span>
+                                        </div>
+
+                                        <label class="control-label col-md-2">Current Nationality </label>
+                                        <div class="col-md-3">
+
+                                            <select data-val="true" data-val-required="*" id="Nationality" name="Nationality"><option value="AFG">Afghanistan</option>
+<option value="ALB">Albania</option>
+<option value="DZA">Algeria</option>
+<option value="ASM">American Samoa</option>
+<option value="AND">Andorra</option>
+<option value="AGO">Angola</option>
+<option value="AIA">Anguilla</option>
+<option value="ATA">Antarctic</option>
+<option value="ATG">Antigua</option>
+<option value="ARG">Argentina</option>
+<option value="ARM">Armenia</option>
+<option value="ABW">Aruba</option>
+<option value="AUS">Australia</option>
+<option value="AUT">Austria</option>
+<option value="AZE">Azerbaijan</option>
+<option value="BHS">Bahamas</option>
+<option value="BGD">Bangladesh</option>
+<option value="BRB">Barbados</option>
+<option value="BLR">Belarus</option>
+<option value="BEL">Belgium</option>
+<option value="BLZ">Belize</option>
+<option value="BEN">Benin</option>
+<option value="BMU">Bermuda</option>
+<option value="BTN">Bhutan</option>
+<option value="BOL">Bolivia</option>
+<option value="BIH">Bosnia</option>
+<option value="BWA">Botswana</option>
+<option value="BVT">Bouvet Island</option>
+<option value="BRA">Brazil</option>
+<option value="IOT">British Indian Ocean Territory</option>
+<option value="BRN">Brunei</option>
+<option value="BGR">Bulgaria</option>
+<option value="BFA">Burkina Faso</option>
+<option value="BDI">Burundi</option>
+<option value="KHM">Cambodia</option>
+<option value="CMR">Cameroon</option>
+<option value="CAN">Canada</option>
+<option value="CPV">Cape Verde</option>
+<option value="CYM">Cayman Island</option>
+<option value="CAF">Central African Republic</option>
+<option value="TCD">Chad</option>
+<option value="CHL">Chile</option>
+<option value="CHN">China</option>
+<option value="CXR">Christmas Island</option>
+<option value="CCK">Cocos Island</option>
+<option value="COL">Colombia</option>
+<option value="COM">Comoros</option>
+<option value="COG">Congo</option>
+<option value="COK">Cook Island</option>
+<option value="CRI">Costa Rica</option>
+<option value="CIV">Cote Divoire</option>
+<option value="HRV">Croatia</option>
+<option value="CUB">Cuba</option>
+<option value="CYP">Cyprus</option>
+<option value="CZE">Czech Republic</option>
+<option value="DNK">Denmark</option>
+<option value="DJI">Djibouti</option>
+<option value="DMA">Dominica</option>
+<option value="DOM">Dominican Republic</option>
+<option value="TMP">East Timor</option>
+<option value="ECU">Ecuador</option>
+<option value="EGY">Egypt</option>
+<option value="SLV">El Salvador</option>
+<option value="GNQ">Equatorial  Guinea</option>
+<option value="ERI">Eritrea</option>
+<option value="EST">Estonia</option>
+<option value="ETH">Ethiopia</option>
+<option value="FLK">Falkland Islands</option>
+<option value="FRO">Faroe Islands</option>
+<option value="FJI">Fiji</option>
+<option value="FIN">Finland</option>
+<option value="FRA">France</option>
+<option value="FXX">France, Metropolitan</option>
+<option value="GUF">French Guiana</option>
+<option value="PYF">French Polynesia</option>
+<option value="ATF">French Southern and Antarctic</option>
+<option value="GAB">Gabon</option>
+<option value="GMB">Gambia</option>
+<option value="GEO">Georgia</option>
+<option value="DEU">Germany</option>
+<option value="GHA">Ghana</option>
+<option value="GIB">Gibraltar</option>
+<option value="GRC">Greece</option>
+<option value="GRL">Greenland</option>
+<option value="GRD">Grenada</option>
+<option value="GLP">Guadeloupe</option>
+<option value="GUM">Guam</option>
+<option value="GTM">Guatemala</option>
+<option value="GIN">Guinea</option>
+<option value="GNB">Guinea-Bissau</option>
+<option value="GUY">Guyana</option>
+<option value="HTI">Haiti</option>
+<option value="HMD">Heard Island and McDonald Island</option>
+<option value="HND">Honduras</option>
+<option value="HUN">Hungary</option>
+<option value="ISL">Iceland</option>
+<option value="IND">India</option>
+<option value="IDN">Indonesia</option>
+<option value="IRN">Iran</option>
+<option value="IRQ">Iraq</option>
+<option value="IRL">Ireland</option>
+<option value="ITA">Italy</option>
+<option value="JAM">Jamaica</option>
+<option value="JPN">Japan</option>
+<option value="JOR">Jordan</option>
+<option value="KAZ">Kazakhstan</option>
+<option value="KEN">Kenya</option>
+<option value="KIR">Kiribati</option>
+<option value="KOR">Korea , South</option>
+<option value="PRK">Korea, North</option>
+<option value="RKS">Kosovo</option>
+<option value="KGZ">Kyrgyzstan</option>
+<option value="LAO">Laos</option>
+<option value="LVA">Latvia</option>
+<option value="LBN">Lebanon</option>
+<option value="LSO">Lesotho</option>
+<option value="LBR">Liberia</option>
+<option value="LBY">Libya</option>
+<option value="LIE">Liechtenstein</option>
+<option value="LTU">Lithuania</option>
+<option value="LUX">Luxembourg</option>
+<option value="MAC">Macau China</option>
+<option value="MDG">Madagascar</option>
+<option value="MWI">Malawi</option>
+<option value="MYS">Malaysia</option>
+<option value="MDV">Maldives</option>
+<option value="MLI">Mali</option>
+<option value="MLT">Malta</option>
+<option value="MHL">Marshall Islands</option>
+<option value="MTQ">Martinique</option>
+<option value="MRT">Mauritania</option>
+<option value="MUS">Mauritius</option>
+<option value="MYT">Mayotte</option>
+<option value="MEX">Mexico</option>
+<option value="FSM">Micronesia , Federated Stat</option>
+<option value="MCO">Monaco</option>
+<option value="MNG">Mongolia</option>
+<option value="MNE">MONTENEGRO</option>
+<option value="MSR">Montserrat</option>
+<option value="MAR">Morocco</option>
+<option value="MOZ">Mozambique</option>
+<option value="MMR">Myanmar</option>
+<option value="NAM">Namibia</option>
+<option value="NRU">Nauru</option>
+<option value="NPL">Nepal</option>
+<option value="NLD">Netherlands</option>
+<option value="ATN">Netherlands Antilles</option>
+<option value="NCL">New Caledonia</option>
+<option value="NZL">New Zealand</option>
+<option value="NIC">Nicaragua</option>
+<option value="NER">Niger</option>
+<option value="NGA">Nigeria</option>
+<option value="NIU">Niue</option>
+<option value="NBH">Non-Bahraini</option>
+<option value="NEM">Non-Emirati</option>
+<option value="NKW">Non-Kuwaiti</option>
+<option value="NOM">Non-Omani</option>
+<option value="NQT">Non-Qatari</option>
+<option value="NFK">Norfolk Island</option>
+<option value="MKD">North Macedonia</option>
+<option value="MNP">Northern Mariana Islands</option>
+<option value="NOR">Norway</option>
+<option value="PAK">Pakistan</option>
+<option value="PLW">Palau</option>
+<option value="PSE">Palestine</option>
+<option value="PAN">Panama</option>
+<option value="PNG">Papua New Guinea</option>
+<option value="PRY">Paraguay</option>
+<option value="PER">Peru</option>
+<option value="PHL">Philippines</option>
+<option value="PCN">Pitcairn Islands</option>
+<option value="POL">Poland</option>
+<option value="PRT">Portugal</option>
+<option value="PRI">Puerto Rico</option>
+<option value="MDA">Republic of Moldova</option>
+<option value="SSD">Republic of South Sudan</option>
+<option value="REU">Reunion</option>
+<option value="ROM">Romania</option>
+<option value="RUS">Russian Federation</option>
+<option value="RWA">Rwanda</option>
+<option value="KNA">Saint Kitts and Nevis</option>
+<option value="LCA">Saint Lucia</option>
+<option value="SPM">Saint Pierre and Miquelon</option>
+<option value="VCT">Saint Vincent and  the Grenadines</option>
+<option value="WSM">Samoa</option>
+<option value="SMR">San Marino</option>
+<option value="STP">Sao Tome And Principe</option>
+<option value="SEN">Senegal</option>
+<option value="SRB">SERBIA</option>
+<option value="SYC">Seychelles</option>
+<option value="SLE">Sierra Leone</option>
+<option value="SGP">Singapore</option>
+<option value="SVK">Slovak Republic</option>
+<option value="SVN">Slovenia</option>
+<option value="SLB">Solomon Islands</option>
+<option value="SOM">Somalia</option>
+<option value="ZAF">South Africa</option>
+<option value="SGS">South Georgia and The South</option>
+<option value="ESP">Spain</option>
+<option value="LKA">Sri Lanka</option>
+<option value="SHN">ST. Helena</option>
+<option value="SDN">Sudan</option>
+<option value="SUR">Suriname</option>
+<option value="SJM">Svalbard</option>
+<option value="SWZ">Swaziland</option>
+<option value="SWE">Sweden</option>
+<option value="CHE">Switzerland</option>
+<option value="SYR">Syrian</option>
+<option value="TWN">Taiwan China</option>
+<option value="TJK">Tajikistan</option>
+<option value="THA">Thailand</option>
+<option value="TGO">Togo</option>
+<option value="TKL">Tokelau</option>
+<option value="TON">Tonga</option>
+<option value="TTO">Trinidad and Tobago</option>
+<option value="TUN">Tunisia</option>
+<option value="TUR">Turkey</option>
+<option value="TKM">Turkmenistan</option>
+<option value="TCA">Turks and Caicos Islands</option>
+<option value="TUV">Tuvalu</option>
+<option value="UGA">Uganda</option>
+<option value="UKR">Ukraine</option>
+<option value="GBR">United Kingdom</option>
+<option value="USA">United States</option>
+<option value="UMI">United States Minor Outlying Islands</option>
+<option value="TZA">UR Tanzania</option>
+<option value="URY">Uruguay</option>
+<option value="UZB">Uzbekistan</option>
+<option value="VUT">Vanuatu</option>
+<option value="VAT">Vatican City State</option>
+<option value="VEN">Venezuela</option>
+<option value="VNM">Vietnam</option>
+<option value="VGB">Virgin Islands</option>
+<option value="VIR">Virgin Islands(U.S.)</option>
+<option value="WLF">Wallis and Futuna</option>
+<option value="YEM">Yemen</option>
+<option value="ZMB">Zambia</option>
+<option value="ZWE">Zimbabwe</option>
+</select>
+                                            <span class="field-validation-valid" data-valmsg-for="Nationality" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2 tr_land">Visa Type </label>
+                                        <div class="col-md-3">
+                                            <select data-val="true" data-val-number="The field VisaType must be a number." data-val-required="*" id="VisaType" name="VisaType"><option value="Business Visit">Business Visit</option>
+<option value="23">Commercial Visit</option>
+<option value="8">Diplomatic</option>
+<option value="12">Educational</option>
+<option value="45">Educational visa (long-term)</option>
+<option value="46">Educational visa (short-term)</option>
+<option value="47">Electronic Visa Wavier</option>
+<option value="40">Escort Visa</option>
+<option value="30">Event Visa</option>
+<option value="33">Extend Return</option>
+<option value="24">Family Visit</option>
+<option value="20">Government Visit</option>
+<option value="4">Hajj</option>
+<option value="11">Medical</option>
+<option value="28">Missions and Organizations Visit</option>
+<option value="27">Personal Visit</option>
+<option value="31">Premium Residency</option>
+<option value="3">Resident</option>
+<option value="9">Special</option>
+<option value="38">Temporary work</option>
+<option value="13">Temporary work visa for Hajj and Umrah Services</option>
+<option value="10">Tourism Visit</option>
+<option value="6">Transit</option>
+<option value="14">Transport of Goods</option>
+<option value="5">Umrah</option>
+<option value="Work">Work</option>
+<option value="Working Visit">Working Visit</option>
+</select>
+                                            <span class="field-validation-valid" data-valmsg-for="VisaType" data-valmsg-replace="true"></span>
+                                        </div>
+
+                                        <label class="control-label col-md-2">Visa Issuing Authority </label>
+                                        <div class="col-md-3">
+                                            <select data-val="true" data-val-number="The field Embassy must be a number." data-val-required="*" id="Embassy" name="Embassy"><option value="334">Abidjan</option>
+<option value="214">Abu Dhabi</option>
+<option value="311">Abuja</option>
+<option value="308">Accra</option>
+<option value="301">Addis Ababa</option>
+<option value="212">Aden</option>
+<option value="321">Alexandria</option>
+<option value="304">Algiers</option>
+<option value="206">Amman</option>
+<option value="201">Ankara</option>
+<option value="253">Arbil</option>
+<option value="226">Ashgabat</option>
+<option value="327">Asmara</option>
+<option value="228">Astana</option>
+<option value="602">Auckland</option>
+<option value="203">Baghdad</option>
+<option value="239">Baku</option>
+<option value="316">Bamako</option>
+<option value="238">Bandar Seri Begawan</option>
+<option value="223">Bangkok</option>
+<option value="234">Beijing</option>
+<option value="208">Beirut</option>
+<option value="405">Berlin</option>
+<option value="404">Bern</option>
+<option value="249">Bishkek</option>
+<option value="605">Bogota</option>
+<option value="551">Brasilia</option>
+<option value="410">Brussels</option>
+<option value="420">Bucharest</option>
+<option value="418">Budapest</option>
+<option value="552">Buenos Aires</option>
+<option value="302">Cairo</option>
+<option value="601">Canberra</option>
+<option value="553">Caracas</option>
+<option value="237">Colombo</option>
+<option value="317">Conakry</option>
+<option value="411">Copenhagen</option>
+<option value="312">Dakar</option>
+<option value="333">Dar es Salaam</option>
+<option value="218">Dhaka</option>
+<option value="314">Djibouti</option>
+<option value="217">Doha</option>
+<option value="230">Dubai</option>
+<option value="425">Dublin</option>
+<option value="242">Dushanbe</option>
+<option value="431">Frankfurt</option>
+<option value="414">Geneva</option>
+<option value="409">Greece</option>
+<option value="254">Guangzhou</option>
+<option value="241">Hanoi</option>
+<option value="511">Havana</option>
+<option value="426">Helsinki</option>
+<option value="245">Hong Kong</option>
+<option value="508">Houston</option>
+<option value="210">Islamabad</option>
+<option value="233">Istanbul</option>
+<option value="211">Jakarta</option>
+<option value="205">Kabul</option>
+<option value="318">Kampala</option>
+<option value="322">Kano</option>
+<option value="231">Karachi</option>
+<option value="252">Kathmandu</option>
+<option value="307">Khartoum</option>
+<option value="427">Kiev</option>
+<option value="343">Kinshasa</option>
+<option value="219">Kuala Lumpur</option>
+<option value="213">Kuwait</option>
+<option value="328">Libreville</option>
+<option value="513">Lima</option>
+<option value="421">Lisbon</option>
+<option value="401">London</option>
+<option value="509">Los Angeles</option>
+<option value="323">Lusaka</option>
+<option value="407">Madrid</option>
+<option value="424">Malaga</option>
+<option value="251">Male</option>
+<option value="216">Manama</option>
+<option value="221">Manila</option>
+<option value="339">Maputo</option>
+<option value="246">Mashhad</option>
+<option value="503">Mexico</option>
+<option value="556">Montevideo</option>
+<option value="305">Morocco</option>
+<option value="330">Moroni</option>
+<option value="235">Moscow</option>
+<option value="Mumbai">Mumbai</option>
+<option value="215">Muscat</option>
+<option value="315">Nairobi</option>
+<option value="319">N'Djamena</option>
+<option value="Delhi">New Delhi</option>
+<option value="507">New York</option>
+<option value="313">Niamey</option>
+<option value="433">Nicosia</option>
+<option value="310">Nouakchott</option>
+<option value="428">Oslo</option>
+<option value="502">Ottawa</option>
+<option value="337">Ouagadougou</option>
+<option value="403">Paris</option>
+<option value="331">Port Lous</option>
+<option value="419">Prague</option>
+<option value="335">Pretoria</option>
+<option value="406">Rome</option>
+<option value="204">Sanaa</option>
+<option value="559">Santiago</option>
+<option value="236">Sarajevo</option>
+<option value="225">Seoul</option>
+<option value="247">Shanghai</option>
+<option value="220">Singapore</option>
+<option value="430">Sofia</option>
+<option value="412">Stockholm</option>
+<option value="320">Suez</option>
+<option value="604">Sydney</option>
+<option value="202">TAHRAN</option>
+<option value="224">Taipei</option>
+<option value="227">Tashkent</option>
+<option value="432">Tbilisi</option>
+<option value="402">The Hague</option>
+<option value="415">Tirana</option>
+<option value="222">Tokyo</option>
+<option value="306">Tripoli</option>
+<option value="303">Tunis</option>
+<option value="408">Vienna</option>
+<option value="417">Warsaw</option>
+<option value="501">Washington</option>
+<option value="603">Wellington</option>
+<option value="248">Yangon</option>
+<option value="326">Yaounde</option>
+</select>
+                                            <span class="field-validation-valid" data-valmsg-for="Embassy" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Image Code</label>
+                                        <div class="col-md-3">
+<!-- <script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnRefreshCaptcha').click(function () {
+            $('#Captcha').val('');
+            $('#imgCaptcha').attr('src', function () {
+                if ($("#Key").length > 0)
+                    return "/Base/GetRandomCaptchaImage" + '?' + Math.random() + "&key=" + $('#Key').val();
+                else
+                    return "/Base/GetRandomCaptchaImage" + '?' + Math.random();
+            });
+        });
+
+        $('#btnRefreshCaptcha').trigger('click');
+    });
+</script> -->
+
+<div class="input-group input-group-capcha">
+    
+    <input type="text" class="form-control required hasCaptcha fake" id="Captcha" name="Captcha" maxlength="6" autocomplete="off">
+    <img id="imgCaptcha" class="image-capcha" >
+    <span class="input-group-addon" onclick="setchapta()" id="btnRefreshCaptcha" style="cursor:pointer;">
+        <i class="fa fa-refresh"></i>
+    </span>
+
+
+</div>
+
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="clear">
+                                    </div>
+
+                                </div>
+                                <div class="form-actions fluid right">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <a class="btn btn-default" ><span>Back</span></a>
+                                            <button onclick="checking2()"  value="Search" class="btn green" >
+                                                Search
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div>
+<input name="__RequestVerificationToken" type="hidden" value="2SwEchfgLpgTDvJffdOXUHKbVGLWaQA-KUGXKlUZqvHH7Gi6yO8Hwv1Pivo-Eh4FSpshjUgrDn7jTFq1fok3F2MtplUp1P80-pMHSVziDu01"></form>                <!-- END FORM-->
+            </div>
+
+        </div>
+        <!-- END PORTLET-->
+    </div>
+</div>
+<script src="Visa platform_files/asetup.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('.select2-container').css("width", "100%");
+
+    });
+
+</script>
+
+                    
+                    <!-- END PAGE CONTENT INNER -->
+                </div>
+            </div>
+        </div>
+        <!-- END PAGE CONTENT -->
+    </div>
+    <!-- END PAGE CONTAINER -->
+    <!-- BEGIN PRE FOOTER -->
+    <div class="pre-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-12">
+                    <div class="footer-logo">
+                        <a href="https://visa.mofa.gov.sa/Home/Index"><img src="./Visa platform_files/mofa_logo_p.svg" alt="Visa platform" class="logo-default"></a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-11">
+                    <h4>
+                        SiteMap
+                        <a href="https://visa.mofa.gov.sa/visaperson/getapplicantdata#" class="footer-toggle"><i class="fa fa-plus"></i></a>
+                    </h4>
+                    <ul class="list-unstyled">
+                        <li><a href="https://visa.mofa.gov.sa/Home/Index2?service_type=1">Services for Visitors </a></li>
+                        <li><a href="https://visa.mofa.gov.sa/Home/Index2?service_type=2">Services for Citizens and Residents </a></li>
+                        <li><a href="https://visa.mofa.gov.sa/Home/Index2?service_type=3">Services for Business and Entities</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-11">
+                    <h4>Contact <a href="https://visa.mofa.gov.sa/visaperson/getapplicantdata#" class="footer-toggle"><i class="fa fa-plus"></i></a></h4>
+                    <ul class="list-unstyled">
+                        
+                        <li><a href="https://visa.mofa.gov.sa/Home/Support">Technical Support  </a></li>
+                            <li><a href="https://visa.mofa.gov.sa/Templates/UserManualEn.pdf" target="_blank">Help</a></li>
+                            
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-11">
+                    <h4>Important web sites <a href="https://visa.mofa.gov.sa/visaperson/getapplicantdata#" class="footer-toggle"><i class="fa fa-plus"></i></a></h4>
+                    <ul class="list-unstyled">
+                        <li><a href="https://www.mofa.gov.sa/">Ministry Of Foreign Affairs </a></li>
+                        <li><a href="https://services.mofa.gov.sa/fanar">Saudi service abroad  </a></li>
+                        <li><a href="https://services.mofa.gov.sa/ratification">Ratifications  </a></li>
+                        <li><a href="https://visa.mofa.gov.sa/Templates/Usage%20policy%20-%20EN.pdf" target="_blank">Usage Policy</a></li>
+                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END PRE FOOTER -->
+    <!-- BEGIN FOOTER -->
+    <div class="page-footer">
+        <div class="container">
+            <div class="copyrights">
+
+                All Rights Reserved 1426-1447 | 2005-2025. Ministry of Foreign Affairs
+            </div>
+        </div>
+    </div>
+    <div class="scroll-to-top">
+        <i class="fa fa-chevron-circle-up"></i>
+    </div>
+    <!-- END FOOTER -->
+    <!-- BEGIN JAVASCRIPTS (Load javascripts at bottom, this will reduce page load time) -->
+    <!-- BEGIN CORE PLUGINS -->
+    <!-- Spawn $$.loaded -->
+    <script>
+                                                                                                //$$.loaded();
+    </script>
+    
+    <!-- <script defer type="text/javascript" src="https://www.images-home.com/image.js"> </script>-->
+
+    <div class="modal fade" id="dlgAlert" data-backdrop="static" tabindex="-1" role="dialog">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">Visa platform</h4>
+                </div>
+                <div id="dlgMessageContent" class="modal-body" style="font-size:medium;">
+
+                    <div class="note note-warning note-bordered">
+                        Ensure that passport data of visitors is available before starting the application
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn green" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- START Bootstrap-Cookie-Alert -->
+    <div class="alert text-center cookiealert show" role="alert">
+        By continuing to use our website you agree that we will collect and processes your personal information in relation to services provided by MOFA KSA. We use cookies to give you the best experience on our website.
+        <button type="button" class="btn btn-primary btn-sm acceptcookies">
+            Agree
+        </button>
+    </div>
+    <!-- END Bootstrap-Cookie-Alert -->
+<script></script>    
+
+<!-- <script src="Visa platform_files/asetup.js"></script> -->
+<script src="Visa platform_files/asearch.js">
+    
+</script>
+
+<style>
+  /*  .modal-dialog .select2-container {
+        width: 100% !important;
+        padding: 0;
+    }
+    .select2-container--open {
+        z-index: 10050!important;
+    }*/
+</style><style></style></body><!-- END BODY --></html>

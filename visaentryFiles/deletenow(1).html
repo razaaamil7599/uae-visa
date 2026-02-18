@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>hi
+        <img id="im1" onclick="saveImage()" src="https://visa.mofa.gov.sa/Base/GetRandomCaptchaImage?0.9633607457341539">
+    t</h2>
+    <script>function saveImage() {
+        alert("this  is working");
+        // Get the image source URL
+        const imageUrl = document.querySelector("im1").src;
+      
+        // Create a hidden anchor element
+        const link = document.createElement('a');
+        link.href = imageUrl;
+      
+        // Set the download attribute to specify the filename
+        link.download = 'image.jpg'; // Change 'image.jpg' to your desired filename
+      
+        // Trigger the click event to initiate the download
+        link.click();
+      }
+        document.querySelector("#desc")
+    </script>
+   
+</body>
+</html>

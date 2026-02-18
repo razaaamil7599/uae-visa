@@ -1,0 +1,37 @@
+<svg width="1000" height="1000" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8f9fa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="1000" fill="url(#grad)" />
+  
+  <!-- Subtle Landmarks Pattern -->
+  <g fill="none" stroke="#bfa36a" stroke-width="0.5" opacity="0.08">
+    <!-- Burj Khalifa -->
+    <path d="M200 800 L210 200 L220 800 Z" />
+    <path d="M205 300 L215 300" />
+    <path d="M202 450 L218 450" />
+    <path d="M200 600 L220 600" />
+    
+    <!-- Burj Al Arab -->
+    <path d="M500 800 Q580 500 500 300 Q540 500 500 800" />
+    <path d="M500 800 L500 300" />
+    <path d="M500 400 L530 400" />
+    <path d="M500 550 L545 550" />
+    
+    <!-- Mosque -->
+    <path d="M750 800 L750 700 Q800 650 850 700 L850 800" />
+    <path d="M800 700 Q800 600 800 700" />
+    <circle cx="800" cy="680" r="30" />
+    <path d="M730 800 L730 600" />
+    <path d="M870 800 L870 600" />
+  </g>
+  
+  <!-- Repeated elements for pattern feel -->
+  <g fill="none" stroke="#bfa36a" stroke-width="0.3" opacity="0.04">
+    <path d="M50 900 L60 600 L70 900 Z" />
+    <path d="M900 400 L910 100 L920 400 Z" />
+  </g>
+</svg>

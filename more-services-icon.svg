@@ -1,0 +1,12 @@
+<svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Document Outline -->
+  <path d="M6 2H14L20 8V20C20 21.1 19.1 22 18 22H6C4.9 22 4 21.1 4 20V4C4 2.9 4.9 2 6 2Z" stroke="#bfa36a" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Folded Corner -->
+  <path d="M14 2V8H20" stroke="#bfa36a" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Text Lines -->
+  <line x1="8" y1="13" x2="16" y2="13" stroke="#bfa36a" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="8" y1="17" x2="16" y2="17" stroke="#bfa36a" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="8" y1="9" x2="11" y2="9" stroke="#bfa36a" stroke-width="1.2" stroke-linecap="round"/>
+</svg>

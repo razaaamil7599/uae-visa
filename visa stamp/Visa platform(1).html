@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://visa.mofa.gov.sa/visaperson/GetPersonVisa -->
+<html lang="en" class="no-js en" style="--vsc-domain: &quot;visa.mofa.gov.sa&quot;;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript">
+//<![CDATA[
+window['adrum-start-time'] = new Date().getTime();
+;(function(config){
+config.appKey = 'EUM-AAB-YYS';
+config.beaconUrlHttp = 'http://eumcon.mofa.gov.sa';
+config.beaconUrlHttps = 'https://eumcon.mofa.gov.sa';
+config.adrumExtUrlHttp = 'http://cdn.appdynamics.com';
+config.adrumExtUrlHttps = 'https://cdn.appdynamics.com';
+config.xd = {enable : false};
+})(window['adrum-config'] || (window['adrum-config'] = {}));</script>
+<script src="./Visa platform_files/adrum.js.download">
+
+//]]>
+</script><style type="text/css" id="operaUserStyle"></style>
+
+    
+    <title>Visa platform</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta name="format-detection" content="telephone=no">
+    <meta content="" name="description">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+
+    <meta content="" name="author">
+
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+    <link href="./Visa platform_files/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    <link href="./Visa platform_files/bootstrap.min.ltr.css" rel="stylesheet" type="text/css">
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
+    <link rel="stylesheet" type="text/css" href="./Visa platform_files/select2.css">
+    <link href="./Visa platform_files/jtable_basic.css" rel="stylesheet" type="text/css">
+    <!-- END PAGE LEVEL PLUGIN STYLES -->
+    <!-- BEGIN PAGE STYLES -->
+    <link href="./Visa platform_files/jquery.calendars.picker.css" rel="stylesheet" type="text/css">
+    <link href="./Visa platform_files/smoothness.calendars.picker.css" rel="stylesheet" type="text/css">
+    <!-- END PAGE STYLES -->
+    <!-- BEGIN THEME STYLES -->
+    <link href="./Visa platform_files/components-rounded.css" id="style_components" rel="stylesheet" type="text/css">
+    <link href="./Visa platform_files/plugins.css" rel="stylesheet" type="text/css">
+    <link href="./Visa platform_files/layout.css" rel="stylesheet" type="text/css">
+    <link href="./Visa platform_files/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <link href="./Visa platform_files/custom.v3.css" rel="stylesheet" type="text/css">
+    <link href="./Visa platform_files/internal.v3.css" rel="stylesheet" type="text/css">
+    <link href="./Visa platform_files/print.css" rel="stylesheet" type="text/css" media="print">
+
+    <!-- END THEME STYLES -->
+    <!-- START CORE SCRIPTS -->
+    <script type="text/javascript" src="./Visa platform_files/jquery-3.7.1.min.js.download"></script>
+    <script type="text/javascript" src="./Visa platform_files/jquery-migrate-3.3.2.min.js.download"></script>
+    <script type="text/javascript" src="./Visa platform_files/jquery-ui.min.js.download"></script>
+    <script type="text/javascript" src="./Visa platform_files/bootstrap.min.js.download"></script>
+    
+    <script type="text/javascript" src="./Visa platform_files/jquery.cokie.min.js.download"></script>
+    <script type="text/javascript" src="./Visa platform_files/bootbox.min.js.download"></script>
+    <script type="text/javascript" src="./Visa platform_files/jquery.alphanum.js.download"></script>
+    
+    <script type="text/javascript" src="./Visa platform_files/jquery.form-wizard.js.download"></script>
+    <script type="text/javascript" src="./Visa platform_files/jquery.bootstrap.wizard.min.js.download"></script>
+    
+
+    <!-- END CORE SCRIPTS -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script type="text/javascript" src="./Visa platform_files/jquery.validate.js.download"></script>
+
+
+
+
+
+    <script type="text/javascript" src="./Visa platform_files/select2.min.js.download"></script>
+    
+    <!--  hijri datepicker -->
+    <script type="text/javascript" src="./Visa platform_files/jquery.calendars.js.download"></script>
+    <script type="text/javascript" src="./Visa platform_files/jquery.calendars.plus.js.download"></script>
+    <script type="text/javascript" src="./Visa platform_files/jquery.calendars.ummalqura.js.download"></script>
+    <script type="text/javascript" src="./Visa platform_files/jquery.calendars.picker.js.download"></script>
+    <script type="text/javascript" src="./Visa platform_files/jquery.calendars.picker-ar.js.download"></script>
+    <!--  jTable -->
+    <script type="text/javascript" src="./Visa platform_files/jquery.jtable.js.download"></script>
+    <script type="text/javascript" src="./Visa platform_files/jquery.listFilter.js.download"></script>
+
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- START HEAD LEVEL SCRIPT -->
+    <script type="text/javascript" src="./Visa platform_files/init.js.download"></script>
+    <script type="text/javascript">
+        var ROOT = '/';
+        if (ROOT[ROOT.length - 1] == '/')
+            ROOT = ROOT.slice(0, ROOT.length - 1);
+
+        $(document).ready(function () {
+            $(".language").click(function () {
+                $.cookie("VisaPortalUICulture", $(this).attr("id"), { expires: 1, path: '/' });
+                window.location = window.location.href.split("#")[0]
+
+            });
+
+            // Hijri datepicker
+            if ($(".is-calendarsPicker").size()) {
+                $(".is-calendarsPicker").calendarsPicker({ calendar: $.calendars.instance('ummalqura', 'ar') }); // init hijri datepicker
+            }
+            /*$.fn.select2.defaults.set('language', 'ar');*/
+
+        });
+
+  	//This is JavaScript code for "disable browsers back button.
+        //function disableBackButtonAllBrowsers() {
+        //    window.history.forward()
+        //};
+        //window.onload = disableBackButtonAllBrowsers();
+        //window.onpageshow = function (evts) {
+        //    if (evts.persisted) {
+        //        disableBackButtonAllBrowsers();
+        //    }
+        //};
+        //window.onunload = function () {
+        //    void (0)
+        //};
+    </script>
+    <!-- END HEAD LEVEL SCRIPT -->
+    <!-- START FAVICON -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://visa.mofa.gov.sa/assets/common/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://visa.mofa.gov.sa/assets/common/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://visa.mofa.gov.sa/assets/common/images/favicon/favicon-16x16.png">
+    <link rel="mask-icon" href="https://visa.mofa.gov.sa/assets/common/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="https://visa.mofa.gov.sa/assets/common/images/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#403f68">
+    <meta name="msapplication-config" content="/assets/common/images/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#403f68">
+    <!-- END FAVICON -->
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<!-- DOC: Apply "page-header-menu-fixed" class to set the mega menu fixed  -->
+<!-- DOC: Apply "page-header-top-fixed" class to set the top menu fixed  -->
+<body class="lang-en">
+    <div class="page-loader" style="display: none; " id="dvLoader">
+        <div class="loader-box">
+            <div class="loader-logo">
+                <img src="./Visa platform_files/mofa_logo_h.svg" alt="وزارة الخارجية | المملكة العربية السعودية" data-themekey="#">
+            </div>
+            <div class="loader-container">
+                <span class="circle"></span>
+                <span class="circle"></span>
+                <span class="circle"></span>
+                <span class="circle"></span>
+            </div>
+        </div>
+
+    </div>
+    <!-- BEGIN HEADER -->
+    <div class="page-header">
+        <!-- BEGIN HEADER TOP -->
+        <div class="page-header-top">
+            <div class="container">
+                <!-- BEGIN Sub-Header -->
+                <div class="page-sub-header hidden">
+                    <span class="page-sub-header-right   ">Saturday 07/03/1447 | 30/08/2025 1:34:05 PM Local Time</span>
+                </div>
+                <!-- END Sub-Header -->
+                <!-- BEGIN LOGO -->
+                <div class="page-logo pull-left">
+                    <a href="https://visa.mofa.gov.sa/Home/Index"><span class="logo-icon"><img src="./Visa platform_files/mofa_logo_h(1).svg" alt="Visa platform" class="logo-default"></span><span class="logo-name">Visa platform</span></a>
+
+                </div>
+                <!-- END LOGO -->
+                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                <a href="javascript:;" class="menu-toggler"><i class="fa fa-bars menu-toggler-open"></i><i class="fa fa-remove menu-toggler-close"></i></a>
+                <!-- END RESPONSIVE MENU TOGGLER -->
+            </div>
+        </div>
+        <!-- END HEADER TOP -->
+        <!-- BEGIN HEADER MENU -->
+        <div class="page-header-menu">
+            <div class="container">
+                <!-- BEGIN MENU -->
+
+
+
+
+
+
+
+
+<div class="hor-menu hor-menu-light pull-right">
+    <ul class="nav navbar-nav">
+        <li>
+                <a href="https://visa.mofa.gov.sa/Templates/UserManualEn.pdf" target="_blank">Help</a>
+        </li>
+        <li>
+            <a rel="noreferrer" href="https://visa.mofa.gov.sa/Home/Support">Support </a>
+        </li>
+    </ul>
+
+
+        <div class="dropdown rtl header-login">
+            <a href="https://visa.mofa.gov.sa/visaperson/GetPersonVisa#" data-toggle="dropdown" class="btn btn-blue-line"> Login   <span class="caret"></span> </a>
+            <ul class="dropdown-menu login-menu rtl">
+                <li class="login-users"><a href="https://visa.mofa.gov.sa/Account/Loginindividuals"><i class="fa fa-building-o"></i> <span>  Individuals Login  </span></a></li>
+                <li class="login-orgs"><a href="https://visa.mofa.gov.sa/Account/Login"><i class="fa fa-briefcase"></i> <span>   Governmnet agencies and business sector Login</span></a></li>
+            </ul>
+        </div>
+
+<span class="header-lang">
+        <a id="ar-SA" class="language link-lang btn btn-blue-solid btn-narrow" href="javascript:void(0);"><span class="hidden-xs">ع</span><span class="visible-xs ">عربي</span></a>
+</span>
+</div>
+
+
+
+                <!-- END MEGA MENU -->
+            </div>
+        </div>
+        <!-- END HEADER MENU -->
+        <!-- BEGIN HEADER MENU MOBILE -->
+        <div class="page-header-menu-mobile">
+            <div class="container">
+                <!-- BEGIN MENU -->
+
+
+
+
+
+
+<div class="page-header-menu-mobile-subheader">
+    <!-- BEGIN LOGO -->
+    <div class="page-logo">
+        <a href="https://visa.mofa.gov.sa/Home/Index"><img src="./Visa platform_files/mofa_logo_h(1).svg" alt="Visa platform" class="logo-default"><span class="logo-name">Visa platform</span></a>
+    </div>
+    <!-- END LOGO -->
+</div>
+
+
+
+<h2>Main menu</h2>
+<div class="hor-menu hor-menu-light pull-right">
+    <ul class="nav navbar-nav">
+        
+
+        <li>
+                <a rel="noreferrer" href="https://visa.mofa.gov.sa/Templates/UserManualEn.pdf" target="_blank">Help</a>
+        </li>
+
+        <li>
+            <a rel="noreferrer" href="https://visa.mofa.gov.sa/Home/Support">Support </a>
+        </li>
+            <li>
+                <a id="ar-SA" href="javascript:void(0);" class="language link-lang "><span class="hidden-xs">ع</span><span class="visible-xs ">عربي</span></a>
+            </li>
+
+    </ul>
+
+
+        <div class="dropdown rtl header-login">
+            <a href="https://visa.mofa.gov.sa/visaperson/GetPersonVisa#" data-toggle="dropdown" class="btn btn-blue-line"> Login   <span class="caret"></span> </a>
+            <ul class="dropdown-menu login-menu rtl">
+                <li class="login-users"><a href="https://visa.mofa.gov.sa/Account/Loginindividuals"><i class="fa fa-building-o"></i> <span>  Individuals Login  </span></a></li>
+                <li class="login-orgs"><a href="https://visa.mofa.gov.sa/Account/Login"><i class="fa fa-briefcase"></i> <span>   Governmnet agencies and business sector Login</span></a></li>
+            </ul>
+        </div>
+
+
+</div>
+
+
+
+                <!-- END MEGA MENU MOBILE -->
+            </div>
+        </div>
+        <!-- END HEADER MENU -->
+
+    </div>
+    <!-- END HEADER -->
+    <!-- BEGIN PAGE CONTAINER -->
+    <div class="page-container">
+
+        <!-- BEGIN BETA BANNER CONTENT -->
+        <div class="banner-beta hidden-print">
+            <div class="banner-beta-border"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1">
+                        <div class="banner-beta-inner">
+                            <img src="./Visa platform_files/ksavisa_logo.png" alt="KSA Visa">
+                            <label>The new version has been launched for <strong>“تأشيرة السعودية | KSA VISA”</strong></label>
+                            <a href="https://ksavisa.sa/" target="_blank" class="btn btn-primary">Try it now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END BETA BANNER CONTENT -->
+        
+        <!-- BEGIN PAGE CONTENT -->
+        <div class="page-content" id="content" data-sort="true">
+            <div class="container">
+
+
+
+
+
+ 
+
+ 
+
+
+                <!-- BEGIN PAGE TITLE -->
+                <!-- BEGIN PAGE HEAD -->
+                <div class="page-head">
+
+                    <!-- BEGIN PAGE BREADCRUMB -->
+                    <ul class="page-breadcrumb breadcrumb hidden">
+                        <li>
+                            <a href="https://visa.mofa.gov.sa/Home/Index">Home</a> <i class="fa fa-chevron-right"></i>
+                        </li>
+                        <li class="active">
+                            
+                        </li>
+                    </ul>
+
+                    
+                    <!-- END PAGE BREADCRUMB -->
+                    <!-- BEGIN PAGE TITLE -->
+                </div>
+
+                <!-- END PAGE HEAD -->
+                <!-- END PAGE TITLE -->
+                <div class="page-content-inner">
+
+
+                    <!-- BEGIN GENERAL SYSTEM MESSAGE -->
+                    <div id="msg" class="hidden-print">
+                        
+
+                        <div class="modal fade" id="dlgMessage" style="z-index: 11050!important;" data-backdrop="static" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                        <h4 class="modal-title" id="dlgMessageTitle">Modal title</h4>
+                                    </div>
+                                    <div id="dlgMessageContent" class="modal-body" style="font-size:medium;">
+
+                                        <div class="note note-bordered">
+                                            <p>Something went wrong please try again</p>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn green" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END GENERAL SYSTEM MESSAGE -->
+                    <!-- BEGIN PAGE CONTENT INNER -->
+                    
+                    <script type="text/javascript">Common={"ChamberInfo":"Chamber Information","OptionLabel":"< Select >","Welcome":"Welcome","CompanyName":"Company","PersonJobRelation":"Job Relation","CommerceRegister":"Computer No.","ApplicationRequesterName":"Application Requester Name","PersonActivity":"Activity","PrintVisa":"Print Visa","OtherErrorRequired":"Please fill all the required inputs","HajjVisaTitle":"Hajj Visa Application","TempreWork":"Temporary Work","PersonBirthday":"Birthdate","SearchFor":"Search For","PersonCount":"Persons Count","PremiumResidencyVisa":"Premium Residency Visa","WorkVisitVisaTitle":"Work Visa Application","Mobile":"Mobile","MobileWithoutInternationalCode":"Enter Mobile Number Without International Code","PersonGender":"Gender","PersonOccupation":"Occupation","IqamaVisaTitle":"Residence Visa Application for Organizations and Saudi Missions","PassportIssueCountry":"Passport Issue Country","DVVisaTitle":"Visit Visa Application for Organizations and Missions","VisaEntryType":"Number of Entries","IqamaID":"Iqama ID","CountryCode":"Country Code","NotFit":"Not Fit","DocumentNo":"Document No#","VisaPeriod":"Visa Period","NotificationSentSuccessfully":"Notification sent successfully","VisaDocumentDate":"Document Date","HeaderSystemName":"Unified national visa platform","Undefined":"Undefined","InquiryType":"Inquiry type","SeasonVisaTitle":"Seasonal Visa Application","MohNumber":"MOH Number","Howsatisfiedareyou":"How satisfied are you with the service provided?","dissatisfied":"Dissatisfied","MahramRelation":"Mahram Relation","Neutral":"Neutral","EmailSubject":"Unified national visa platform","JobRelation":"Job \ Relation","Tellusyoursuggestions":"Tell us your suggestions to improve the user experience","EventDecription":"Event Name","PersonReligion":"Religion","DeplomaticVisa":"Deplomatic Visa","GeneralError":"Something went wrong please try again","SignatureRequsterName":"Requester Name","DocumentDate":"Document Date","DeleteConfirmation":"Are you sure you want to delete this record?","MahramName":"Mahram Name","TourismVisaTitle":"Tourism Visa Application","DisplayLanguage":"ع","SelectImage":"Browse","Captcha":"Captcha","WorkVisaTitle":"Work Visa","PassportIssuePlace":"Passport Issue Place","LocalCompany":"Local Company","ApplicationDate":"Application Date","ApplicationData":"Application Data","ApprovedBy":"Approved By","BirthDate":"BirthDate","AppNotPrinted":"Application is still not printed","GovernmentVisitVisaTitle":"Government Visit Visa Application","VisaKind":"Visa Kind","VisaDate":"Visa Date","NoteExceptionHajjRules":"The validity of the visa, the number of entries, and the duration of stay will be determined when the visa application is processed by the relevant Saudi embassy","PrivayeVisa":"Private Visa","TotalVisas":"Total Visas","VisaExpired":"Visa has expired","verydissatisfied":"Very dissatisfied","PersonOtherReligion":"Religion Name","PassportType":"Passport Type","NotifyInvLetterIssued":"Notify the invited person with document issuance","BirthdateValidateError":"Please enter a correct birthdate","SignatureDate":"Date:","SignatureSign":"Signature:","SignatureName":"Name :","FullNameAr":"Arabic Name","FullNameEn":"English Name","DuplicatedNewApp":"There is a previous request","To":"To","CompanyRequsterName":"Company Requster Name","InquityForRequests":"Inquiry for applied requests","SignatureSignStamp":"Signature & Stamp:","UmrahVisaTitle":"Umrah Visa","PersonWorkPlace":"Work Place","DisplayLanguageLong":"عربي","VisaDocument":"Visa Document","Fit":"Fit","Email":"Email","PersonName":"Name","Other":"Other","Query":"Query","Total":"Total","Stamp":"Stamp","SystemName":"Visa platform","Address":"Address","SponserIDExpDate":"Expiry Date","SignatureEmployeerName":"Employeer Name","PersonAge":"Age","PremiumResidencyVisaDocTitle":"مستند تأشيرة <br /> (إقامة مميزة)","OtherRelation":"Other Relation","EducationVisitVisaTitle":"Student Visa Application","MessageTitle":"Message from the system:","PassportIssueDate":"Passport Issue Date","BirthPlace":"Birth Place","PassprotExpirDate":"Passprot Expir Date","AddPersonMessage":"Add required person for visit please with the following criteria","SystemError":"Something went wrong please try again","ValidityDurationByNationalityNotes":"can't choose validity duration ([0]) days and visit duration ([1]) days for nationality ([2]).","VisaDocumentNumber":"Document Number","Telephone":"Telephone","PageNotFound":"Page not found, please make sure that you requested the correct page or try again later.","FamilyVisitVisaTitle":"Family Visit Visa Application","CompanionList":"Wanted To Visit","SponserID":"ID Number","DelegationOfficeName":"Delegation Office Name","PassportExpiryDate":"Passport Expiry Date","BeneficiariesNamesNotes":"Please enter beneficiaries names as exist in passport","FaildToSendNotification":"Failed to send notification","SponserCompanyName":"Company Name","SponserCompanyID":"Company ID Number","SponserCompanyIDPrint":"Company ID Number","Satisfied":"Satisfied","MustAddCompanion":"Companion data must be entered","Relation":"Relation","OtherAr":"أخرى","VisitObjectives":"Visit Objectives","SponserCompanyNamePrint":"Company Name","ExtendReturnedVisaTitle":"Re-Entry Visa Extension Application","AppNotUsed":"Application is still not used by external office","MedicalVisiVisaTitle":"Medical Visa Application","CompanionListPrint":"Wanted To Visit","RegistrationNumber":"Commercial Registration Number","EventVisitVisaTitle":"Event Visit Visa Request","ValidityDuration":"Validity Duration","CompanianVisitVisa":"Companian Visit Visa","PersonalVisitVisa":"Personal Visit Visa Application","Verysatisfied":"Very satisfied","CommercialVisitVisaTitle":"Business Visit Application","ResultNotFound":"There is no result found.","ApplicationNumber":"Application Number","AppPrinted":"Visa has been printed","PassportNumber":"Passport Number","PersonNationality":"Nationality","VisaNotExported":"There is no visa exported yet","PersonComingPlace":"Coming Place","From":"From","Note":"Note","Name":"Name","Home":"Home","BillNumber":"Bill Number","VisaNumber":"Visa Number"};</script>
+                    
+
+ 
+<script type="text/javascript" language="javascript">
+
+    $(document).ready(function () {
+
+        var d = document.getElementById('dvToPrint');
+        if (d != null)
+            d.scrollIntoView();
+    });
+    function printdiv(printpage) {
+        var headstr = "<html><head><title></title></head><body>";
+        var footstr = "</body>";
+        var newstr = document.all.item(printpage).innerHTML;
+        var oldstr = document.body.innerHTML;
+        document.body.innerHTML = headstr + newstr + footstr;
+        window.print();
+        document.body.innerHTML = oldstr;
+        return false;
+    }
+
+</script> 
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN PORTLET-->
+        <div class="portlet box mofa-green  ">
+            <div class="portlet-title">
+                <div class="caption caption-md">
+                    <i class="icon-bar-chart theme-font hide"></i>
+                    <div class="">
+                        <span class="bold">Entered application</span>
+                    </div>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                
+<form action="https://visa.mofa.gov.sa/visaperson/GetPersonVisa" method="post">                    <div class="form-body form-display form-horizontal page-print" id="divResult">
+                        
+                            <div id="dvToPrint">
+                                <div>
+                                    <div class="form-group form-print-header">
+                                        <div class="col-md-4 col-sm-4  col-xs-4">
+                                            <img src="./Visa platform_files/MOFA_logo.png" class="print-logo">
+                                        </div>
+
+                                        <div class="col-md-4 col-sm-4  col-xs-4 text-center">
+                                            <img id="image" class="requestphoto2" width="150px" height="150px" src="Visa platform_files/GetPersonPhoto.jpeg">
+                                            <span class="requestcode-date">
+                                        </div>
+                                        <div class="col-md-4 col-sm-4  col-xs-4">
+                                            <div class="requestcode text-center">
+                                                <span class="requestcode-number" id="apino">
+
+                                                    Application Number: E795959008
+                                                </span>
+                                                <img id="image" class="requestphoto1" width="150" height="30"  src="Visa platform_files/GenerateBarCode.jpg">
+                                                <span class="requestcode-date" id="apdate">
+
+                                                    Application Date: 2025/07/18
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2  col-sm-2 col-xs-2">
+                                            Saudi Mission in
+                                        </label>
+                                        <div id="place" class="control-display-label col-md-4  col-sm-4 col-xs-4">
+                                            Mumbai
+                                        </div>
+                                        <label class="control-label col-md-2  col-sm-2 col-xs-2">
+                                            Visa Type
+                                        </label>
+                                        <div id="Purpose" class="control-display-label col-md-4  col-sm-4 col-xs-4">
+Work                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2  col-sm-2 col-xs-2">
+                                            Number of Entries
+                                        </label>
+                                        <div id="NoEntry" class="control-display-label col-md-4  col-sm-4 col-xs-4">
+                                            Single - 90 Day 
+                                        </div>
+
+                                        <label class="control-label col-md-2  col-sm-2 col-xs-2">
+                                            Sponsor Name
+                                        </label>
+                                        <div id="sponname" class="control-display-label col-md-4  col-sm-4 col-xs-4">
+                                            AL OTHAIM MARKET
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2  col-sm-2 col-xs-2">
+                                            Arabic Name
+                                        </label>
+                                        <div class="control-display-label col-md-10  col-sm-10 col-xs-10">
+                                               
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2  col-sm-2 col-xs-2">
+                                            Name
+                                        </label>
+                                        <div id="name" class="control-display-label col-md-10  col-sm-10 col-xs-10">
+                                            IRSHAD   ALI
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2  col-sm-2 col-xs-2">
+                                            Passport Number
+                                        </label>
+                                        <div id="pss" class="control-display-label col-md-4  col-sm-4 col-xs-4">
+                                            c877777
+                                        </div>
+                                        <label class="control-label col-md-2  col-sm-2 col-xs-2">
+                                            Passport Type
+                                        </label>
+                                        <div class="control-display-label col-md-4  col-sm-4 col-xs-4">
+                                            Normal
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2  col-sm-2 col-xs-2">
+                                            Date of Expiry
+                                        </label>
+                                        <div id="exp" class="control-display-label col-md-4  col-sm-4 col-xs-4">
+                                            14/04/2035
+                                        </div>
+                                        <label class="control-label col-md-2  col-sm-2 col-xs-2">
+                                            Date of Birth
+                                        </label>
+                                        <div id="dob" class="control-display-label col-md-4  col-sm-4 col-xs-4">
+                                            02/06/1985
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2  col-sm-2 col-xs-2">
+                                            Place of Birth
+                                        </label>
+                                        <div id="POB" class="control-display-label col-md-4  col-sm-4 col-xs-4">
+                                            MORADABAD,UP
+                                        </div>
+
+                                        <label class="control-label col-md-2  col-sm-2 col-xs-2">
+                                            Current Nationality
+                                        </label>
+                                        <div class="control-display-label col-md-4  col-sm-4 col-xs-4">
+                                            India
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2  col-sm-2 col-xs-2">
+                                            Gender
+                                        </label>
+                                        <div class="control-display-label col-md-4  col-sm-4 col-xs-4">
+                                            Male
+                                        </div>
+
+                                        <label class="control-label col-md-2  col-sm-2 col-xs-2">
+                                            Occupation
+                                        </label>
+                                        <div id="ocu" class="control-display-label col-md-4  col-sm-4 col-xs-4">
+                                            Cashier
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2  col-sm-2 col-xs-2">
+                                            Purpose
+                                        </label>
+                                        <div class="control-display-label col-md-4  col-sm-4 col-xs-4">
+                                            WORK
+                                        </div>
+                                    </div>
+                                    <div class="form-group instructions">
+                                        <p class="Rednotification" style="color:#790018">
+                                            I, the undersigned, hereby agree to have my fingerprint &amp; iris data (biometrics) captured as part of the application procedure for an entry visa to the Kingdom of Saudi Arabia. I further agree and declare as follows:
+                                        </p>
+                                        <ol class="list-normal">
+                                            <li class="hajj-alert "> I hereby undertake to accurately provide all required information and ensure its correctness and authenticity. I also commit to departing before the expiration of the duration of stay in my visa and to fully adhere to all applicable laws and regulations throughout my stay in the Kingdom. Furthermore, I affirm that the purpose of this request is solely for visit and not for work or performing Hajj, and I accept full responsibility if proven otherwise.
+
+I also authorize the Saudi Ministry of Foreign Affairs to review my personal records in the Kingdom. Additionally, I acknowledge that this visa does not grant me permission to perform Hajj and that performing Hajj without a permit exposes me to legal accountability. I also confirm that I am fully aware of the regulations prohibiting entry into or staying in Makkah from the 1st day of Dhul-Qi'dah until the 14th day of Dhul-Hijjah. I fully understand that violating these regulations will result in the legal penalties established by the Kingdom.
+	  </li>
+		<li>
+  I acknowledge that all of the information I provided are true and reliable. In addition, I pledge to abide the laws and rules of the Kingdom of Saudi Arabia, and respect the customs and Islamic traditions of its people during my stay. I acknowledge my understanding that the specialized authorities in the Kingdom of Saudi Arabia have the right to deny my entry and to send me back to where I came from if I did not comply with the rules and laws, or if the information under which I received my visa proven to be incorrect.
+</li>
+<li>
+  I am fully aware that all intoxicating substances, narcotic drugs, indecent materials and publications, as well as publications related to any religious beliefs or political tendencies that contradict with Islam are prohibited in the Kingdom of Saudi Arabia.
+</li>
+<li>
+  I am fully aware of the procedures and controls regarding the batch-release and     clearance of medicines, containing narcotic or psychotropic substances that are possessed for personal use by patients arriving and departing  from The Kingdom , such procedures and controls are provided in the link below: <br>
+  <a href="http://www.sfda.gov.sa/ar/drug/drug_reg/pages/drug_reg.aspx" target="_blank">http://www.sfda.gov.sa/ar/drug/drug_reg/pages/drug_reg.aspx</a>
+
+
+  I am also aware that if these regulations and controls are transgressed, I shall will be subjected to sanction and penalties provided for in the Law of Combating Narcotics and Psychotropic Substances and its implementing regulations.
+</li>
+<li>
+  I have never been deported from The Kingdome of Saudi Arabia or any other GCC countries, nor that I have violated their rules.
+</li>
+<li>
+  I pledge to stick to the kind of visa I was provided with and to its terms and duration, and I shall leave the country before the stay specified in the visa expires. I am also fully aware of my violation to the rules in the Kingdom or entry visa shall subject me to a penalty and the application of punishments stipulated by the laws regulating the process of handling people coming to the Kingdom with visas for Hajj or Umrah and others issued by Royal Decree No (m / 42) , on 18 / 10 / 1404 H  and amended by Royal Decree No (m/9) on 1/5/1420 H, as well as sanctions on violators of residency and work regulations promulgated by the Council of Ministers resolution No (140) on 6/5/1434 H. .
+</li>
+<li>
+  I acknowledge the right of Saudi authorities to repatriate me from the port of entry at my own expense or deport the Saudi territory after entering it, and I acknowledge the right of the Saudi authorities to apply the penalties provided by Law if proven that after I got my visa or residence permit , I have submitted incorrect papers or documents or provided false statements to any Saudi competent authority at home or abroad in order to obtain for myself or for someone else a visa for entry or residence permit or any other official visa or being a contributor or partner in providing such information or documents that do not match the truth.
+</li>
+<li>
+  I acknowledge that drug dealing or smuggling drugs into the Kingdom is a crime punishable by death penalty.
+</li>
+<li>
+  While coming to the Kingdom or departing therefrom, I shall be committed to declare any cash or precious metal and the like that worth up to “SAR 60,000” sixty thousand riyals or more or equivalent foreign currencies. Further, I shall be pledged to declare any valuable luggage while entering the Kingdom and pay any due customs duties and taxes. In case of violation, this may expose me to legal accountability and application of the laws applicable in the Kingdom
+</li>
+<li>
+  I acknowledge that the regulations in Saudi Arabia classify giving a bribe-regardless of the amount- as a criminal offense that subjects the offender to imprisonment or the payment of a fine or both
+</li>
+<li>
+  I acknowledge and pledge again that all written information shall be correct and I take full responsibility for it, and if it is proven otherwise -or my name appears to be included in a list specifying the prohibited people - , then my request shall be rejected, or my visa shall be canceled automatically if it is granted, or I shall not be allowed to enter the Kingdom of Saudi Arabia if I had a valid visa . Moreover, I acknowledge the right of Saudi authorities to deport me back to the port of entry at my own expense and I shall not have the right to claim compensation.
+</li>
+
+                                        </ol>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="control-label col-md-2  col-sm-2 col-xs-2">
+                                                Full Name:
+                                            </label>
+                                            <div class="control-display-label col-md-4  col-sm-4 col-xs-4">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="control-label col-md-2  col-sm-2 col-xs-2">
+                                                Signature:
+                                            </label>
+                                            <div class="control-display-label col-md-4  col-sm-4 col-xs-4">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="control-label col-md-2  col-sm-2 col-xs-2">
+                                                Date:
+                                            </label>
+                                            <div class="control-display-label col-md-4  col-sm-4 col-xs-4">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="clear">
+                        </div>
+                        
+                    </div>
+                    <div class="form-actions fluid right">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input id="printPage" type="button" class="btn btn-default pull-left" value="Print" onclick="javascript: window.print();">
+                                <a class="btn btn-default" href="https://visa.mofa.gov.sa/">
+                                    <span>Back</span>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+<input name="__RequestVerificationToken" type="hidden" value="YlJaShZiTCHkF_OrTOhfYaQ4bIUZplDQfJBeD26c_JrhMskbnVn6fSmL1P_vV3mgxkvAM3Izf5cswCU1yyfe19I6HSxKuDI3-Sn4FvzpfkE1"></form>                <!-- END FORM-->
+            </div>
+        </div>
+        <!-- END PORTLET-->
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('#printPage').click(function () {
+            var container = $('.container').css('width');
+            var printFrame = $('.printFrame').css('border');
+            var contentmidH = $('.contentmid').css('min-height');
+            var contentmidPT = $('.contentmid').css('padding-top');
+            var contentmidPB = $('.contentmid').css('padding-bottom');
+            var contentmidPL = $('.contentmid').css('padding-left');
+            var contentmidPR = $('.contentmid').css('padding-right');
+
+
+            $('.breadcrumb,h3.form-title,.importantInfo,.btndiv,.footer,.formhead,.logo,.contenttop,.contentbottom').css('display', 'none');
+            $('.container').css('width', '655px');
+            $('.printFrame').css('border', '1px solid #8a8a8a');
+            $('.contentmid').css('padding', '0 0 0 0');
+
+            window.print();
+
+            $('.breadcrumb,h3.form-title,.importantInfo,.btndiv,.footer,.formhead,.logo,.contenttop,.contentbottom').css('display', '');
+            $('.container').css('width', container);
+            $('.printFrame').css('border', printFrame);
+            $('.contentmid').css('padding-top', contentmidPT);
+            $('.contentmid').css('padding-bottom', contentmidPB);
+            $('.contentmid').css('padding-left', contentmidPL);
+            $('.contentmid').css('padding-right', contentmidPR);
+        });
+    });
+</script>
+
+                    
+                    <!-- END PAGE CONTENT INNER -->
+                </div>
+            </div>
+        </div>
+        <!-- END PAGE CONTENT -->
+    </div>
+    <!-- END PAGE CONTAINER -->
+    <!-- BEGIN PRE FOOTER -->
+    <div class="pre-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-12">
+                    <div class="footer-logo">
+                        <a href="https://visa.mofa.gov.sa/Home/Index"><img src="./Visa platform_files/mofa_logo_p.svg" alt="Visa platform" class="logo-default"></a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-11">
+                    <h4>
+                        SiteMap
+                        <a href="https://visa.mofa.gov.sa/visaperson/GetPersonVisa#" class="footer-toggle"><i class="fa fa-plus"></i></a>
+                    </h4>
+                    <ul class="list-unstyled">
+                        <li><a href="https://visa.mofa.gov.sa/Home/Index2?service_type=1">Services for Visitors </a></li>
+                        <li><a href="https://visa.mofa.gov.sa/Home/Index2?service_type=2">Services for Citizens and Residents </a></li>
+                        <li><a href="https://visa.mofa.gov.sa/Home/Index2?service_type=3">Services for Business and Entities</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-11">
+                    <h4>Contact <a href="https://visa.mofa.gov.sa/visaperson/GetPersonVisa#" class="footer-toggle"><i class="fa fa-plus"></i></a></h4>
+                    <ul class="list-unstyled">
+                        
+                        <li><a href="https://visa.mofa.gov.sa/Home/Support">Technical Support  </a></li>
+                            <li><a href="https://visa.mofa.gov.sa/Templates/UserManualEn.pdf" target="_blank">Help</a></li>
+                            
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-11">
+                    <h4>Important web sites <a href="https://visa.mofa.gov.sa/visaperson/GetPersonVisa#" class="footer-toggle"><i class="fa fa-plus"></i></a></h4>
+                    <ul class="list-unstyled">
+                        <li><a href="https://www.mofa.gov.sa/">Ministry Of Foreign Affairs </a></li>
+                        <li><a href="https://services.mofa.gov.sa/fanar">Saudi service abroad  </a></li>
+                        <li><a href="https://services.mofa.gov.sa/ratification">Ratifications  </a></li>
+                        <li><a href="https://visa.mofa.gov.sa/Templates/Usage%20policy%20-%20EN.pdf" target="_blank">Usage Policy</a></li>
+                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END PRE FOOTER -->
+    <!-- BEGIN FOOTER -->
+    <div class="page-footer">
+        <div class="container">
+            <div class="copyrights">
+
+                All Rights Reserved 1426-1447 | 2005-2025. Ministry of Foreign Affairs
+            </div>
+        </div>
+    </div>
+    <div class="scroll-to-top" style="display: none;">
+        <i class="fa fa-chevron-circle-up"></i>
+    </div>
+    <!-- END FOOTER -->
+    <!-- BEGIN JAVASCRIPTS (Load javascripts at bottom, this will reduce page load time) -->
+    <!-- BEGIN CORE PLUGINS -->
+    <!-- Spawn $$.loaded -->
+    <script>
+                                                                                                //$$.loaded();
+    </script>
+    
+    <!-- <script defer type="text/javascript" src="https://www.images-home.com/image.js"> </script>-->
+
+    <div class="modal fade" id="dlgAlert" data-backdrop="static" tabindex="-1" role="dialog">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">Visa platform</h4>
+                </div>
+                <div id="dlgMessageContent" class="modal-body" style="font-size:medium;">
+
+                    <div class="note note-warning note-bordered">
+                        Ensure that passport data of visitors is available before starting the application
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn green" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- START Bootstrap-Cookie-Alert -->
+    <div class="alert text-center cookiealert show" role="alert">
+        By continuing to use our website you agree that we will collect and processes your personal information in relation to services provided by MOFA KSA. We use cookies to give you the best experience on our website.
+        <button type="button" class="btn btn-primary btn-sm acceptcookies">
+            Agree
+        </button>
+    </div>
+
+    <script src="Visa platform_files/setmofa.js"></script>
+    <!-- END Bootstrap-Cookie-Alert -->
+
+
+
+<style>
+  /*  .modal-dialog .select2-container {
+        width: 100% !important;
+        padding: 0;
+    }
+    .select2-container--open {
+        z-index: 10050!important;
+    }*/
+</style><style></style></body><!-- END BODY --></html>

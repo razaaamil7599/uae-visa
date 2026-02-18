@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>backup code </title>
+<script src ="fisrtpagevisafiles/visa-data.js"></script>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #fffbfb;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  #dataEntryTable1{
+  
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+  #img1,#profImg{
+    
+    height: 130px;
+    width: 130px;
+
+  }
+  table {
+  
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  table, th, td {
+    border: 1px solid #8ce05f;
+    padding: 8px;
+    text-align: left;
+  }
+  /* #dataEntryTable1 th td {
+    border: 1px solid #fcfcfc;
+    padding: 8px;
+    text-align: left;
+  } */
+  th {
+    background-color: #4CAF50;
+    color: white;
+  }
+  .btn {
+    
+    padding: 5px 10px;
+    margin: 2px;
+    cursor: pointer;
+  }
+  .add-btn {
+    background-color: #4CAF50;
+    color: white;
+  }
+  .delete-btn {
+    
+    background-color: #f44336;
+    color: white;
+  }
+  .input-field {
+    padding: 5px;
+    margin: 5px 0;
+    box-sizing: border-box;
+  }
+</style>
+</head>
+<body>
+  <!-- function 
+    addRow()
+    addDATA()
+   -->
+  
+   <table id="dataEntryTable">
+    <tr>
+      <th>Image</th>
+      <th>Name</th>
+      <th>Visa No.</th>
+      <th>Application number</th>
+      <th>status</th>
+      <th>Valid From</th>
+      <th>stay duration</th>
+      <th>Date of Birth</th>
+      <th>Passport No.</th>
+      <th>Ref. No.</th>
+      <!-- <th>Occupation</th> -->
+      <th>pass Exp Date</th>
+      <th>Employer name</th>
+      <th>pss code</th>
+      <th>qr code</th>
+      <th>Actions</th>
+    </tr>
+  
+  </table>
+
+<table id="dataEntryTable0" >
+  
+  <!-- <button ondblclick="localStorage.clear()">test</button>
+  <button ondblclick="check()">test2</button> -->
+  <tr>
+    <th>Image</th>
+    <th>Name</th>
+    <th>Visa No.</th>
+    <th>Application number</th>
+    <th>status</th>
+    <th>Valid From</th>
+    <th>stay duration</th>
+    <th>Date of Birth</th>
+    <th>Passport No.</th>
+    <th>Ref. No.</th>
+    <!-- <th>Occupation</th> -->
+    <th>pass Exp Date</th>
+    <th>Employer name</th>
+    <th>pss code</th>
+    <th>qr code</th>
+    <th>Actions</th>
+  </tr>
+ 
+ 
+</table>
+
+<div id="changebutton">
+<button class="btn add-btn" id="addRow" onclick="addRow()">ADD</button>
+</div>
+<a href="fisrtpagevisafiles/visa-data.js" download=" VISA -DATA .txt">
+<a href="fisrtpagevisafiles/visa-data.js" download=" VISA -DATA .txt">
+<button class="btn add-btn">backup Current DATA</button>
+</a>
+
+<button class="btn add-btn" ondblclick="downloadFile()">downloadFile</button>
+
+
+<!-- <script type="module" src="visa-data.js"></script>  -->
+<!-- <button onclick="convertimage()">test</button> -->
+<!-- <script defer type="text/javascript" src="my.js"> </script> -->
+
+<script >
+
+  console.log(visadata);
+  
+function addRow() {
+
+  var table = document.getElementById("dataEntryTable");
+  document.getElementById("changebutton").innerHTML=`<button class="btn add-btn" ondblclick="addDATA()">SAVE</button>`;
+  var row = table.insertRow(-1);
+
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  var cell0 = row.insertCell(3);
+  var cell4 = row.insertCell(4);
+   
+  var cell5 = row.insertCell(5);
+  var cell6 = row.insertCell(6);
+  var cell7 = row.insertCell(7);
+  var cell8 = row.insertCell(8);
+  var cell9 = row.insertCell(9);
+  var cell10 = row.insertCell(10);
+  var cell11 = row.insertCell(11);
+  var cell12 = row.insertCell(12);
+  var cell13 = row.insertCell(13);
+  var cell13 = row.insertCell(14);
+  var cell14 = row.insertCell(15);
+  
+// cell1.innerHTML = '<input id="imageInput" type="file" class="input-field" accept="image/*">'; // image
+cell1.innerHTML = '<input type="file" id="imageInput" accept="image/*"><br> <img id="profImg" >';
+ // image
+// <br> <input type="file" id="imageInputqr"  accept="image/*">
+// <br> <input type="file" id="imageInputqr"  accept="image/*">
+cell2.innerHTML = '<input id="nameInput" type="text" class="input-field" placeholder="Name">'; // name
+cell3.innerHTML = '<input id="visaNoInput" type="number" class="input-field" placeholder="visa no">'; // visa no.
+cell0.innerHTML = '<input id="Application_No" type="number" class="input-field" placeholder="Application_No">'; // visa no.
+cell4.innerHTML = '<select id="status"><option value="onlined">online</option><option value="offlined">ofline 2</option></select>';
+ // stastus button
+
+cell5.innerHTML = '<input id="validFromInput" type="date" class="input-field">'; // valid from 
+cell6.innerHTML = '<input id="durationInput" type="number" class="input-field" placeholder="duration">'; // duration 
+cell7.innerHTML = '<input id="dobInput" type="date" class="input-field">'; // dob 
+cell8.innerHTML = '<input id="passportNoInput" type="number" class="input-field" placeholder="Passport No.">'; // pn
+cell9.innerHTML = '<input id="refNoInput" type="number" class="input-field" placeholder="ref No.">'; // rf
+// cell10.innerHTML = '<input id="occupationInput" type="text" class="input-field" placeholder="Occupation">'; // rf
+cell10.innerHTML = '<input id="pssdateexp" type="date" class="input-field">'; // rf
+cell11.innerHTML = '<input id="employerNameInput" type="text" class="input-field" placeholder="Employer name">'; // rf
+cell12.innerHTML = '<textarea id="pcode" rows="2" cols="50"></textarea>'; // rf
+// cell113.innerHTML = '<textarea id="pcode" rows="2" cols="50"></textarea>'; // rf
+cell114.innerHTML = '<textarea id="pcode" rows="2" cols="50"></textarea>'; // rf
+
+
+}
+var imgstring;
+
+function convertimage(){
+    
+  var base64String ="asi" ;
+  var fileInput = document.getElementById('imageInput');
+  
+  if (fileInput.files && fileInput.files[0]) {
+    var fileReader = new FileReader();
+    
+    fileReader.onload = function(e) {
+      base64String = e.target.result;
+      imgstring = base64String;
+      //  alert(base64String);
+        document.getElementById('base64Text').textContent = base64String;
+        document.getElementById('profImg').src = base64String;
+        // document.getElementById('base64Image').src = base64String;
+        // localStorage.setItem("imgsrc",base64String);
+        // document.getElementById('base64Image').style.display = 'block';
+      };
+      
+      // return base64String ;
+      fileReader.readAsDataURL(fileInput.files[0]);
+    
+    
+  }
+
+  }
+
+
+  function convertimageqr(i){
+    
+    var base64Stringqr ="asi" ;
+      var fileInput = document.getElementById(`imageInput${i}`);
+      
+      if (fileInput.files && fileInput.files[0]) {
+        var fileReader = new FileReader();
+        fileReader.onload = function(e) {
+          base64Stringqr = e.target.result;
+          imgstring = base64Stringqr;
+          document.getElementById('base64Textqr').textContent = base64Stringqr;
+          // document.getElementById('base64Image').src = base64String;
+          // localStorage.setItem("imgsrcqr",base64Stringqr);
+          alert(base64Stringqr);
+          editdata(i);
+          // document.getElementById('base64Image').style.display = 'block';
+        };
+        
+        // return base64String ;
+        fileReader.readAsDataURL(fileInput.files[0]);
+      
+    }
+  
+    }
+
+
+
+
+function addDATA(){
+  localStorage.clear();
+  // Assuming these elements are already created in your HTML
+  convertimage();
+  setTimeout(addDATA1, 600);}
+function addDATA1(){
+var name = document.getElementById("nameInput").value;
+var visaNo = document.getElementById("visaNoInput").value;
+var Application_No1 = document.getElementById("Application_No").value;
+var validFrom = document.getElementById("validFromInput").value;
+var duration = document.getElementById("durationInput").value;
+var dob = document.getElementById("dobInput").value;
+// var status1 =document.getElementById("#status").value;
+var passportNo = document.getElementById("passportNoInput").value;
+var PssEXpDate1 = document.getElementById("pssdateexp").value;
+
+var refNo = document.getElementById("refNoInput").value;
+// var occupation = document.getElementById("occupationInput").value;
+// var occupation = document.getElementById("pssdateexp").value;
+var employerName = document.getElementById("employerNameInput").value;
+var passCode = document.getElementById("pcode").value;
+var imagesrc1 =  document.getElementById('base64Text').textContent;
+
+
+var newVisaData = [{
+  Name: name, // Use the variable 'name'
+  Visa_no: visaNo, // Use the variable 'visaNo'
+  Application_No:Application_No1 , // No corresponding input provided
+
+  // status:status1,
+  
+  Valid_From: validFrom, // Use the variable 'validFrom'
+  Valid_Until: "", // No corresponding input provided
+  validy_days: duration, // Use the variable 'duration'
+  Visa_Type: "", // No corresponding input provided
+  Birth_Date: dob, // Use the variable 'dob'
+  Passport_No: passportNo,
+  PssEXpDate :PssEXpDate1,// Predefined value
+  agencyname: "", // No corresponding input provided
+  Employer_name: employerName, // Use the variable 'employerName'
+  Ref_no: refNo, // Use the variable 'refNo'
+  Ref_Date: "",
+   // No corresponding input provided
+  Occupation: " Mosque Servant -خادم المسجد", // Use the variable 'occupation'
+  Employer_name: employerName, // Duplicate (consider removing one)
+  Valid_till: validFrom, // Likely meant Valid_Until (consider correcting)
+  PSScode1: passCode, // No corresponding input provided
+ // No corresponding input provided
+ imagesrc: imagesrc1, // No image selection provided
+  barcode_image: null , // No image selection provided
+}];
+
+ 
+visadata.push(newVisaData[0]);
+alert("data have saved \n donwnload and change it with visa-data.js"+newVisaData[0]);
+  
+}
+function downloadFile(){
+  
+  const st = JSON.stringify(visadata); 
+      var studentText =`const visadata = `+st;
+
+
+      // Download the text file using a blob and URL
+      const blob = new Blob([studentText], { type: 'javaScript' });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'visa-data.js'; // Set filename
+      link.click();
+
+      // Clear the input fields
+      nameInput.value = '';
+      ageInput.value = '';
+
+      alert('Student data saved to text file!');}
+
+function deleteRow(r) {
+  var i = r.parentNode.parentNode.rowIndex;
+   document.getElementById("dataEntryTable").deleteRow(i);
+}
+</script>
+
+
+
+
+<script>
+ 
+
+  for( var i = 0 ;i<visadata.length;i++){
+     addtuple(i);      
+ 
+  }
+  function addtuple(i){//// set data
+ 
+   var table = document.getElementById("dataEntryTable");
+   var row = table.insertRow(-1);
+   
+   var cell1 = row.insertCell(0);
+   var cell2 = row.insertCell(1);
+   var cell3 = row.insertCell(2);
+   var cell0 = row.insertCell(3);
+   var cell4 = row.insertCell(4);
+   var cell5 = row.insertCell(5);
+   var cell6 = row.insertCell(6);
+   var cell7 = row.insertCell(7);
+   var cell8 = row.insertCell(8);
+   var cell9 = row.insertCell(9);
+   var cell10 = row.insertCell(10);
+   var cell11 = row.insertCell(11);
+   var cell12 = row.insertCell(12);
+   var cell14 = row.insertCell(13);
+   var cell13 = row.insertCell(14);
+   
+
+  // var imgpath = "fisrtpagevisafiles/media/profile/"+visadata[i].imagesrc;
+   cell1.innerHTML = ` <img id="img1"  src="${visadata[i].imagesrc}"> `; // image
+   cell2.innerHTML = `<td  >${visadata[i].Name}</td>`; // name
+
+   cell3.innerHTML = `<div onclick="gotofirstpage(${i})" >${visadata[i].Visa_no}</div>`; // visa no
+   
+   cell0.innerHTML =`<div onclick="gotosecondpage(${visadata[i].Application_No})" >${visadata[i].Application_No}</td>`; // application number
+
+   cell4.innerHTML = `<td><button id="sbtn${i}" class="statusbtn">${visadata[i].status}</button></td>`; // stastus button
+   
+   if(visadata[i].status=="onlined"){
+    document.querySelector(`#sbtn${i}`).style.color = "green";
+}
+ else{document.querySelector(`#sbtn${i}`).style.color = "red";}
+   cell5.innerHTML =` <td>${visadata[i].Valid_From}</td>`; // valid from 
+   cell6.innerHTML = ` <td>${visadata[i].validy_days} days</td>`; // duration 
+   cell7.innerHTML = ` <td>${visadata[i].Birth_Date}</td>`; // dob 
+   cell8.innerHTML = ` <td>${visadata[i].Passport_No}</td>`;; // pn
+   cell9.innerHTML=` <td>${visadata[i].Ref_no}</td>`; // rf
+   cell10.innerHTML =` <td>${visadata[i].PssEXpDate}</td>`; // occupataion
+   cell11.innerHTML = ` <td>${visadata[i].Employer_name}</td>`; // rf
+   cell12.innerHTML =` <td><textarea> ${visadata[i].PSScode1}</textarea> </td>`;// rf
+   cell13.innerHTML = `<button class="btn add-btn" onclick="edit(${i})">edit</button>`; 
+   cell14.innerHTML = `<img id="img1"  src="${visadata[i].barcode_image}">
+  
+  <input type="file" id="imageInput${i}" accept="image/*"> <br><button id ="uploadqr" onclick="setqr(${i})" >change</button>`; 
+   
+   
+ 
+ 
+  }
+  function edit(i){
+   var pss=  prompt(` enter password to change \n ${visadata[i].Name} detail `);
+  
+   if(pss==786){
+  var table = document.getElementById("dataEntryTable");
+  var row = table.insertRow(-1);
+
+ var cell1 = row.insertCell(0);
+   var cell2 = row.insertCell(1);
+   var cell3 = row.insertCell(2);
+   var cell0 = row.insertCell(3);
+   var cell4 = row.insertCell(4);
+   var cell5 = row.insertCell(5);
+   var cell6 = row.insertCell(6);
+   var cell7 = row.insertCell(7);
+   var cell8 = row.insertCell(8);
+   var cell9 = row.insertCell(9);
+   var cell10 = row.insertCell(10);
+   var cell11 = row.insertCell(11);
+   var cell12 = row.insertCell(12);
+   var cell13 = row.insertCell(13);
+  
+
+  cell1.innerHTML = `<input id ="imageInput" type="file"  class="input-field">`; // image
+  cell2.innerHTML = `<input id="editName" type="text" class="input-field" value=${visadata[i].Name}>`; // name
+  cell3.innerHTML = `<input type="number" class="input-field" value=${visadata[i].Visa_no}>`; // visa no.
+ 
+
+  cell4.innerHTML = `<select id="status"><option value="onlined">online</option><option value="offlined">ofline 2</option></select>'`; // stastus button
+
+  cell5.innerHTML = `<input  type="date" class="input-field">`; // valid from 
+  cell6.innerHTML = `<input type="number" class="input-field" value=${visadata[i].validy_days}">`; // duration 
+  cell7.innerHTML = `<input type="date" class="input-field">`; // dob 
+  cell8.innerHTML = `<input type="number" class="input-field" value=${visadata[i].Passport_No}">`; // pn
+  cell9.innerHTML = `<input type="number" class="input-field" value=${visadata[i].Ref_no}>`; // rf
+  cell10.innerHTML = `<input type="text" class="input-field" value=${visadata[i].Occupation}>`; // rf
+  cell11.innerHTML = `<input type="text" class="input-field" value=${visadata[i].Employer_name}>`; // rf
+  cell12.innerHTML = `<input type="text" class="input-field"value=${visadata[i].PSScode1 +visadata[i].PSScode2}>`; // rf
+  cell13.innerHTML = `<button class="btn add-btn" onclick="editSave(${i})">save</button>`; 
+   cell0.innerHTML = `<input id  ="Application_No" type="number" class="input-field" value=${visadata[i].Application_No}>`; //application number.
+  
+
+}
+else
+{alert("wrong password ");}
+}
+
+
+
+
+
+function editSave(i){
+  alert(i);
+  
+  
+  
+  // Assuming these elements are already created in your HTML
+  convertimage();
+ 
+  var imagesrc1 = localStorage.getItem("imgsrc");
+  var imagesrcqr = localStorage.getItem("imgsrcqr");
+  var name = document.getElementById("nameInput").value;
+  var visaNo = document.getElementById("visaNoInput").value;
+  var Application_No1 = document.getElementById("Application_No").value;
+  var validFrom = document.getElementById("validFromInput").value;
+var duration = document.getElementById("durationInput").value;
+var dob = document.getElementById("dobInput").value;
+// var status1 =document.getElementById("#status").value;
+var passportNo = document.getElementById("passportNoInput").value;
+var refNo = document.getElementById("refNoInput").value;
+// var occupation = document.getElementById("occupationInput").value;
+var PssEXpDate1 = document.getElementById("pssdateexp").value;
+var employerName = document.getElementById("employerNameInput").value;
+var passCode = document.getElementById("pcode").value;
+
+
+var newVisaData = [{
+ Name: name, // Use the variable 'name'
+ Visa_no: visaNo, // Use the variable 'visaNo'
+ Application_No: Application_No1, // No corresponding input provided
+ // status:status1,
+ 
+ Valid_From: validFrom, // Use the variable 'validFrom'
+ Valid_Until: "", // No corresponding input provided
+ validy_days: duration, // Use the variable 'duration'
+ Visa_Type: "", // No corresponding input provided
+ Birth_Date: dob, // Use the variable 'dob'
+ Passport_No: passportNo,
+ 
+ pssdateexp:PssEXpDate1, // Predefined value
+ agencyname: "", // No corresponding input provided
+ Employer_name: employerName, // Use the variable 'employerName'
+ Ref_no: refNo, // Use the variable 'refNo'
+ Ref_Date: "", // No corresponding input provided
+ Occupation: occupation, // Use the variable 'occupation'
+ Employer_name: employerName, // Duplicate (consider removing one)
+ Valid_till: validFrom, // Likely meant Valid_Until (consider correcting)
+ PSScode1: passCode, // No corresponding input provided
+// No corresponding input provided
+ imagesrc: imagesrc1, // No image selection provided
+ barcode_image: "fisrtpagevisafiles/media/" , // No image selection provided
+}];
+
+
+visadata[i]=newVisaData;
+alert("data saved");
+
+  }
+
+  ////////////////////////////////////////////
+   function gotofirstpage(i){
+    
+     alert(`going to 1 page of ${visadata[i].Name} \n press esp for cancle`);
+    var pagepath ="../1stpage/Visa platform";
+    const url = pagepath+".html?AppNo=" + encodeURIComponent(visadata[i].Application_No); // Encode data for URL safety
+    window.location.href = url;
+
+    // localStorage.clear();
+    // localStorage.setItem("apn",visadata[i].Application_No);
+    // localStorage.setItem("spn",visadata[i].Passport_No);
+    // alert(localStorage.)
+    // window.location.href = "../1stpage/Visa platform.html";
+   }
+////////////////////////////////////////////
+function gotosecondpage(apn){
+  // alert("the"+apn);
+ var path = "../2ndpage/2ndpage"
+  const url = path+".html?AppNo=" + encodeURIComponent(apn); // Encode data for URL safety
+  alert(url);   
+  window.location.href = url;
+// window.location.href = "../2ndpage/2ndpage.html";
+}
+
+
+
+function setqr(i){
+
+  convertimageqr(i);
+
+ 
+ 
+
+}
+function editdata(i){
+  var imagesrc1qr = document.getElementById('base64Textqr').textContent;
+  alert(imagesrc1qr); 
+ visadata[i].barcode_image =imagesrc1qr;
+
+}
+  </script>
+  
+ 
+ <div id="base64Text"  ></div>
+ <div id="base64Textqr" ></div>
+ 
+</body>
+</html>

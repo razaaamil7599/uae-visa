@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visa Extension | AL-HARAM PORTAL</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
+    <style>
+        body {
+            padding: 0;
+            background-color: #f4f7f9;
+        }
+
+        .container {
+            margin-top: 40px;
+        }
+
+        .info-box-blue {
+            background-color: #e3f2fd;
+            border: 1px solid #bbdefb;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            color: #1976d2;
+            font-size: 0.9rem;
+        }
+
+        .info-box-blue i {
+            font-size: 2rem;
+        }
+
+        .extension-container {
+            max-width: 1000px;
+            margin: 0 auto 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loading-overlay" id="loadingOverlay">
+        <img src="falcon-loader.gif" alt="Loading...">
+    </div>
+
+    <!-- Top Navbar -->
+    <nav class="icp-nav">
+        <div class="nav-content">
+            <div class="nav-left">
+                <img src="tawasul-logo.png" alt="ICP Logo" height="40">
+                <div class="nav-links-main">
+                    <a href="/"><i class="fas fa-home"></i> Home</a>
+                    <a href="/browse-services" class="active">Public Services</a>
+                    <a href="/golden-services">Golden Residency Services</a>
+                    <a href="#">Blue Residency Services</a>
+                    <a href="#">Public Visa Services</a>
+                    <div class="nav-dropdown">
+                        <a href="#">Help <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+                    </div>
+                    <a href="#">User Manual</a>
+                </div>
+            </div>
+            <div class="nav-right">
+                <i class="fas fa-th"></i>
+                <i class="fas fa-search"></i>
+                <i class="fas fa-language"></i>
+                <i class="fas fa-globe"></i>
+                <div class="nav-login" onclick="location.href='/login-page'">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Login</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-title">Visa Extension Service</div>
+
+        <div class="extension-container">
+            <div class="result-section-header-icp">Identification Information (Service Beneficiary)</div>
+
+            <div class="info-box-blue">
+                <i class="fas fa-info-circle"></i>
+                <span>Please fill in the following fields then click on Search button to view the visa
+                    information</span>
+            </div>
+
+            <form id="extensionForm">
+                <div class="form-section">
+                    <div class="radio-group" style="margin-bottom: 25px;">
+                        <span style="font-size: 0.95rem; color: #444; width: 140px; font-weight: 600;">Choose Identifier
+                            *</span>
+                        <label class="radio-option">
+                            <input type="radio" name="identifier" value="passport"> Passport Information
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="identifier" value="file" checked> Visa File Number
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="identifier" value="unified"> Unified Number
+                        </label>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="input-wrapper" style="grid-column: span 2;">
+                            <label class="input-label">Visa File Number *</label>
+                            <div class="grid-4">
+                                <div class="multi-input">
+                                    <input id="extDept" placeholder="201">
+                                    <span class="slash">/</span>
+                                </div>
+                                <div class="multi-input">
+                                    <input id="extYear" placeholder="2026">
+                                    <span class="slash">/</span>
+                                </div>
+                                <div class="multi-input">
+                                    <input id="extType" placeholder="2">
+                                    <span class="slash">/</span>
+                                </div>
+                                <input id="extSeq" placeholder="131124">
+                            </div>
+                        </div>
+
+                        <div class="input-wrapper" style="grid-column: span 2;">
+                            <label class="input-label">Current Nationality *</label>
+                            <div class="nationality-wrapper">
+                                <input class="nat-code" value="205" readonly>
+                                <div class="nat-search-wrapper">
+                                    <input class="nat-search" value="INDIA" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="captcha-box" style="margin-top: 30px; max-width: 300px;">
+                        <div class="captcha-content" id="captchaBox" onclick="startCaptcha()"
+                            style="display: flex; align-items: center; padding: 10px; border: 1px solid #ddd; border-radius: 4px; cursor: pointer; background: #fafafa; gap: 15px;">
+                            <div class="captcha-checkbox" id="captchaCheck"
+                                style="width: 24px; height: 24px; border: 2px solid #ccc; border-radius: 3px; position: relative;">
+                            </div>
+                            <span id="captchaText" style="flex-grow: 1; font-size: 0.9rem; color: #444;">Verify you are
+                                human</span>
+                            <div
+                                style="text-align: right; display: flex; flex-direction: column; align-items: flex-end;">
+                                <img src="cloudflare-logo.png" width="70">
+                                <span style="font-size: 0.6rem; color: #999; margin-top: 2px;">Privacy • Help</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="search-footer" style="justify-content: flex-end; border-top: none; padding-top: 0;">
+                    <a href="/"><i class="fas fa-home"></i> Home</a>
+                    <a href="/browse-services">Public Services</a>
+                </div>
+            </form>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="/search-page" style="color: #666; text-decoration: none; font-size: 0.9rem;">
+                <i class="fas fa-arrow-left"></i> Back to Search
+            </a>
+        </div>
+    </div>
+
+    <script>
+        let isVerified = false;
+
+        document.querySelector('.btn-search').addEventListener('click', () => {
+            const loader = document.getElementById('loadingOverlay');
+            loader.style.display = 'flex';
+            setTimeout(() => {
+                loader.style.display = 'none';
+                alert("This service is currently under maintenance. Please try again later.");
+            }, 2000);
+        });
+        function startCaptcha() {
+            const check = document.getElementById('captchaCheck');
+            const text = document.getElementById('captchaText');
+            const box = document.getElementById('captchaBox');
+
+            box.style.pointerEvents = 'none';
+            check.classList.add('loading');
+
+            setTimeout(() => {
+                check.classList.remove('loading');
+                check.classList.add('checked');
+                text.innerText = "Success!";
+                isVerified = true;
+            }, 1500);
+        }
+    </script>
+</body>
+
+</html>

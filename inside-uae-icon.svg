@@ -1,0 +1,28 @@
+<svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Box/Bracket -->
+  <path d="M9 4H18C19.1 4 20 4.9 20 6V18C20 19.1 19.1 20 18 20H9" stroke="#bfa36a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Arrow -->
+  <path d="M12 12H4" stroke="#bfa36a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12 12L9 9" stroke="#bfa36a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12 12L9 15" stroke="#bfa36a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Adjusting to match the image: Thick solid filled arrow pointing right into a bracket -->
+  <!-- Let's redraw to match the specific icon style: Thick filled arrow -->
+  <path d="M4 12H15" stroke="#bfa36a" stroke-width="3" stroke-linecap="round"/>
+  <path d="M12 8L16 12L12 16" stroke="#bfa36a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Redrawing completely to match the 'Input' icon style -->
+  <path d="M10 5H18C19.1 5 20 5.9 20 7V17C20 18.1 19.1 19 18 19H10" stroke="#bfa36a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M4 12H15" stroke="#bfa36a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12 9L15 12L12 15" stroke="#bfa36a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Overwrite with the exact filled style if possible, or clean outline -->
+  <!-- The user image is a filled arrow pointing into a U-shape on its side -->
+  <rect x="0" y="0" width="24" height="24" fill="white" fill-opacity="0.01"/> <!-- Hitbox -->
+  
+  <!-- Final Polish -->
+  <path d="M12 5H17C18.1 5 19 5.9 19 7V17C19 18.1 18.1 19 17 19H12" stroke="#bfa36a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M3 12H14" stroke="#bfa36a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M11 9L14 12L11 15" stroke="#bfa36a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
