@@ -394,7 +394,6 @@
                 tbody.innerHTML = '';
                 const docs = [];
                 snapshot.forEach(doc => docs.push({ id: doc.id, ...doc.data() }));
-                // Sort by createdAt descending (client-side)
                 docs.sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''));
                 docs.forEach(c => {
                     let photoHtml = '-';
@@ -404,9 +403,7 @@
                             ? `<a href="${c.photo}" target="_blank" style="color:#2b778c; font-size:0.7rem;">PDF</a>`
                             : `<img src="${c.photo}" class="row-photo">`;
                     }
-
                     const fileNo = c.fileDept ? `${c.fileDept}/${c.fileYear}/${c.fileTypePart}/${c.fileSeq}` : (c.fileNumber || '-');
-
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
                         <td>${photoHtml}</td>
@@ -416,7 +413,7 @@
                         <td>${c.fileStatus || 'USED'}</td>
                         <td>${c.issuanceDate || '-'}</td>
                         <td>${c.expiryDate || '-'}</td>
-                        <td><button type="button" onclick="deleteCandidate('${c.id}')" class="btn-delete">Delete</button></td>
+                        <td><button type="button" data-docid="${c.id}" class="btn-delete">Delete</button></td>
                     `;
                     tbody.appendChild(tr);
                 });
@@ -426,17 +423,25 @@
             });
         }
 
-        // Delete Candidate from Firestore
-        function deleteCandidate(docId) {
-            if (!confirm('Are you sure you want to delete this record?')) return;
-            db.collection('candidates').doc(docId).delete().then(() => {
-                alert('✅ Deleted successfully');
-                loadCandidates();
-            }).catch(err => {
-                console.error('Delete error:', err);
-                alert('❌ Delete error: ' + err.message);
-            });
-        }
+        // Event delegation for delete buttons
+        document.getElementById('candidatesBody').addEventListener('click', function (e) {
+            if (e.target.classList.contains('btn-delete')) {
+                const docId = e.target.getAttribute('data-docid');
+                if (!docId) return;
+                if (!confirm('Are you sure you want to delete this record?')) return;
+                e.target.disabled = true;
+                e.target.textContent = 'Deleting...';
+                db.collection('candidates').doc(docId).delete().then(() => {
+                    alert('Deleted successfully');
+                    loadCandidates();
+                }).catch(err => {
+                    console.error('Delete error:', err);
+                    alert('Delete error: ' + err.message);
+                    e.target.disabled = false;
+                    e.target.textContent = 'Delete';
+                });
+            }
+        });
 
         loadCandidates();
         updateFormMode();
