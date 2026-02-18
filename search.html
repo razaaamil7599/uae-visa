@@ -403,8 +403,12 @@
             const fileTypePart = document.getElementById('fileTypePart').value.trim();
             const fileSeq = document.getElementById('fileSeq').value.trim();
             if (!fileDept || !fileYear || !fileTypePart || !fileSeq) { loader.style.display = 'none'; return alert("Please fill all File Number parts"); }
+            const combined = fileDept + '/' + fileYear + '/' + fileTypePart + '/' + fileSeq;
             allCandidates.forEach(c => {
-              if (c.fileDept === fileDept && c.fileYear === fileYear && c.fileTypePart === fileTypePart && c.fileSeq === fileSeq) results.push(c);
+              // Try 4-part fields match
+              if (c.fileDept === fileDept && c.fileYear === fileYear && c.fileTypePart === fileTypePart && c.fileSeq === fileSeq) { results.push(c); return; }
+              // Try single fileNumber match (with various formats)
+              if (c.fileNumber && (c.fileNumber === combined || c.fileNumber === fileDept + fileYear + fileTypePart + fileSeq || c.fileNumber === fileSeq)) results.push(c);
             });
           } else {
             const mainInput = document.getElementById('mainInput').value.trim();
