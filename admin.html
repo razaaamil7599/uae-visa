@@ -420,16 +420,43 @@
             });
         }
 
-        // Global delete function on window object
+        // Global delete function - NO alerts/confirms (Chrome may block them)
         window.deleteDoc = function (id) {
-            alert('Step 1: Delete clicked for ID: ' + id);
-            if (!confirm('Step 2: Confirm delete?')) return;
-            alert('Step 3: Starting delete...');
+            // Find the button that was clicked and change its text
+            var btns = document.querySelectorAll('.btn-delete[onclick]');
+            var clickedBtn = null;
+            for (var i = 0; i < btns.length; i++) {
+                if (btns[i].getAttribute('onclick').indexOf(id) > -1) {
+                    clickedBtn = btns[i];
+                    break;
+                }
+            }
+            if (clickedBtn) {
+                clickedBtn.textContent = 'Deleting...';
+                clickedBtn.disabled = true;
+                clickedBtn.style.background = '#fef3c7';
+                clickedBtn.style.color = '#92400e';
+            }
             db.collection('candidates').doc(id).delete().then(function () {
-                alert('Step 4: SUCCESS! Record deleted.');
-                window.location.reload();
+                if (clickedBtn) {
+                    clickedBtn.textContent = '✓ Deleted';
+                    clickedBtn.style.background = '#d1fae5';
+                    clickedBtn.style.color = '#065f46';
+                }
+                // Remove the row after 1 second
+                setTimeout(function () {
+                    if (clickedBtn) {
+                        var row = clickedBtn.closest('tr');
+                        if (row) row.remove();
+                    }
+                }, 1000);
             }).catch(function (err) {
-                alert('Step 4: FAILED! Error: ' + err.message);
+                if (clickedBtn) {
+                    clickedBtn.textContent = 'FAILED: ' + err.message;
+                    clickedBtn.style.background = '#fee2e2';
+                    clickedBtn.style.color = '#991b1b';
+                    clickedBtn.disabled = false;
+                }
             });
         };
 
