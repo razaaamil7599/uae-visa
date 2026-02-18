@@ -399,8 +399,14 @@
             const fileTypePart = document.getElementById('fileTypePart').value.trim();
             const fileSeq = document.getElementById('fileSeq').value.trim();
             if (!fileDept || !fileYear || !fileTypePart || !fileSeq) { loader.style.display = 'none'; return alert("Please fill all File Number parts"); }
-            const snapshot = await queryRef.where('fileDept', '==', fileDept).where('fileYear', '==', fileYear).where('fileTypePart', '==', fileTypePart).where('fileSeq', '==', fileSeq).get();
-            snapshot.forEach(doc => results.push(doc.data()));
+            // Query by fileDept first, then filter client-side to avoid composite index requirement
+            const snapshot = await queryRef.where('fileDept', '==', fileDept).get();
+            snapshot.forEach(doc => {
+              const d = doc.data();
+              if (d.fileYear === fileYear && d.fileTypePart === fileTypePart && d.fileSeq === fileSeq) {
+                results.push(d);
+              }
+            });
           } else {
             const mainInput = document.getElementById('mainInput').value.trim();
             if (!mainInput) { loader.style.display = 'none'; return alert("Please enter the required information"); }
