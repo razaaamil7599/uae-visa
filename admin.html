@@ -392,91 +392,46 @@
             db.collection('candidates').get().then(function (snapshot) {
                 var tbody = document.getElementById('candidatesBody');
                 tbody.innerHTML = '';
-                var docs = [];
-                snapshot.forEach(function (doc) { docs.push({ id: doc.id, data: doc.data() }); });
-                docs.sort(function (a, b) { return (b.data.createdAt || '').localeCompare(a.data.createdAt || ''); });
-
-                for (var i = 0; i < docs.length; i++) {
-                    var c = docs[i].data;
-                    var docId = docs[i].id;
-                    var tr = document.createElement('tr');
-
-                    // Photo cell
-                    var tdPhoto = document.createElement('td');
+                snapshot.forEach(function (doc) {
+                    var c = doc.data();
+                    var id = doc.id;
+                    var photoHtml = '-';
                     if (c.photo) {
                         if (c.photoName && c.photoName.toLowerCase().endsWith('.pdf')) {
-                            tdPhoto.innerHTML = '<a href="' + c.photo + '" target="_blank" style="color:#2b778c;font-size:0.7rem;">PDF</a>';
+                            photoHtml = '<a href="' + c.photo + '" target="_blank">PDF</a>';
                         } else {
-                            var img = document.createElement('img');
-                            img.src = c.photo;
-                            img.className = 'row-photo';
-                            tdPhoto.appendChild(img);
+                            photoHtml = '<img src="' + c.photo + '" class="row-photo">';
                         }
-                    } else { tdPhoto.textContent = '-'; }
-                    tr.appendChild(tdPhoto);
-
-                    // File # cell  
-                    var tdFile = document.createElement('td');
-                    tdFile.textContent = c.fileDept ? c.fileDept + '/' + c.fileYear + '/' + c.fileTypePart + '/' + c.fileSeq : (c.fileNumber || '-');
-                    tr.appendChild(tdFile);
-
-                    // Passport cell
-                    var tdPassport = document.createElement('td');
-                    tdPassport.textContent = c.passport || '-';
-                    tr.appendChild(tdPassport);
-
-                    // Unified # cell
-                    var tdUnified = document.createElement('td');
-                    tdUnified.textContent = c.unifiedNumber || '-';
-                    tr.appendChild(tdUnified);
-
-                    // Status cell
-                    var tdStatus = document.createElement('td');
-                    tdStatus.textContent = c.fileStatus || 'USED';
-                    tr.appendChild(tdStatus);
-
-                    // Issuance cell
-                    var tdIssuance = document.createElement('td');
-                    tdIssuance.textContent = c.issuanceDate || '-';
-                    tr.appendChild(tdIssuance);
-
-                    // Expiry cell
-                    var tdExpiry = document.createElement('td');
-                    tdExpiry.textContent = c.expiryDate || '-';
-                    tr.appendChild(tdExpiry);
-
-                    // Delete button cell
-                    var tdAction = document.createElement('td');
-                    var delBtn = document.createElement('button');
-                    delBtn.type = 'button';
-                    delBtn.className = 'btn-delete';
-                    delBtn.textContent = 'Delete';
-                    delBtn.setAttribute('data-id', docId);
-                    delBtn.addEventListener('click', (function (id, btn) {
-                        return function () {
-                            if (!confirm('Are you sure you want to delete?')) return;
-                            btn.disabled = true;
-                            btn.textContent = 'Deleting...';
-                            db.collection('candidates').doc(id).delete().then(function () {
-                                alert('Deleted successfully!');
-                                loadCandidates();
-                            }).catch(function (err) {
-                                alert('Delete error: ' + err.message);
-                                btn.disabled = false;
-                                btn.textContent = 'Delete';
-                            });
-                        };
-                    })(docId, delBtn));
-                    tdAction.appendChild(delBtn);
-                    tr.appendChild(tdAction);
-
+                    }
+                    var fileNo = c.fileDept ? (c.fileDept + '/' + c.fileYear + '/' + c.fileTypePart + '/' + c.fileSeq) : (c.fileNumber || '-');
+                    var tr = document.createElement('tr');
+                    tr.innerHTML = '<td>' + photoHtml + '</td>' +
+                        '<td>' + fileNo + '</td>' +
+                        '<td>' + (c.passport || '-') + '</td>' +
+                        '<td>' + (c.unifiedNumber || '-') + '</td>' +
+                        '<td>' + (c.fileStatus || 'USED') + '</td>' +
+                        '<td>' + (c.issuanceDate || '-') + '</td>' +
+                        '<td>' + (c.expiryDate || '-') + '</td>' +
+                        '<td><button type="button" class="btn-delete" onclick="window.deleteDoc(\'' + id + '\')">Delete</button></td>';
                     tbody.appendChild(tr);
-                }
+                });
             }).catch(function (err) {
-                console.error('Load error:', err);
                 alert('Load error: ' + err.message);
             });
         }
+
+        // Global delete function on window object
+        window.deleteDoc = function (id) {
+            alert('Step 1: Delete clicked for ID: ' + id);
+            if (!confirm('Step 2: Confirm delete?')) return;
+            alert('Step 3: Starting delete...');
+            db.collection('candidates').doc(id).delete().then(function () {
+                alert('Step 4: SUCCESS! Record deleted.');
+                window.location.reload();
+            }).catch(function (err) {
+                alert('Step 4: FAILED! Error: ' + err.message);
+            });
+        };
 
         loadCandidates();
         updateFormMode();
